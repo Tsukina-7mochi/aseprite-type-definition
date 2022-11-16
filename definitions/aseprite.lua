@@ -547,6 +547,14 @@ Dialog = {
 }
 
 
+---@class Frame
+---@field sprite Sprite The sprite of this frame
+---@field frameNumber integer The frame number; the `frame` is equal to `frame.sprite.frames[frameNumber]`
+---@field duration number Duration of this frame in the animation in seconds
+---@field previous Frame
+---@field next Frame
+
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
