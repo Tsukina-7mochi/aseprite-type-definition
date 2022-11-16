@@ -672,6 +672,21 @@ Image = {
 function Image(width, height, colorMode) end
 
 
+---Specifications of sprites or images
+---@class ImageSpec
+---@field colorMode ColorMode
+---@field width integer
+---@field height integer
+---@field colorSpace ColorSpace
+---@field transparentColor integer The index that refers a transparent color in a palette when the image or sprite uses indexed color mode
+
+---Creates a new `ImageSpec` instance
+---@return ImageSpec
+---@overload fun(otherImageSpec: ImageSpec): ImageSpec
+---@overload fun(options: {width: integer, height: integer, colorMode: ColorMode | number, transparentColor: number})
+function ImageSpec() end
+
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
