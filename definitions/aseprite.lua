@@ -555,6 +555,123 @@ Dialog = {
 ---@field next Frame
 
 
+---@class Image
+---@field width integer
+---@field height integer
+---@field colorMode ColorMode
+---@field spec ImageSpec The specification for this image
+---@field cel Cel The cel to which this image belongs or `nil`
+---@field bytes string A byte string that contains raw image data
+---@field rowStride integer Number of bytes for each row in the image
+Image = {
+    ---Creates a copy of the image
+    ---@param image self
+    ---@return Image
+    clone=function(image) end,
+
+    ---Cleare all pixels in the image with given color (or `image.spec.transparentColor` if no color is specified)
+    ---@param image self
+    ---@param color? Color
+    clear=function(image, color) end,
+
+    ---Sets the pixel in the xy-coordinate to the given integer pixel value
+    ---@param image self
+    ---@param x integer
+    ---@param y integer
+    ---@param color integer
+    drawPixel=function(image, x, y, color) end,
+
+    ---Returns a integer pixel value for the given xy-coordinate related to the "Image" itself
+    ---@param image self
+    ---@param x integer
+    ---@param y integer
+    ---@return integer
+    getPixel=function(image, x, y) end,
+
+    ---Copies/draws the given sourceImage image over destinationImage; If position is a point, it will draw the sourceImage in the given position
+    ---@param destinationImage self
+    ---@param sourceImage Image
+    ---@param position? Point
+    drawImage=function(destinationImage, sourceImage, position) end,
+
+    ---Draws the given sourceSprite frame number into the destinationImage; If position is a point, it will draw the sourceSprite in the given position
+    ---@param destinationImage self
+    ---@param sourceSprite Sprite
+    ---@param frameNumber integer
+    ---@param position Point
+    drawSprite=function(destinationImage, sourceSprite, frameNumber, position) end,
+
+    ---Returns true if both images looks the same (spec is equal and all pixels are the same)
+    ---@param image self
+    ---@param otherImage Image
+    ---@return boolean
+    isEqual=function(image, otherImage) end,
+
+    ---Returns true if all pixels in the image are equal to the transparent color
+    ---@param image self
+    ---@return boolean
+    isEmpty=function(image) end,
+
+    ---Returns true if all pixels in the image are equal to the given color (which can be a pixel color or a color)
+    ---@param image self
+    ---@param color Color | integer
+    ---@return boolean
+    isPlain=function(image, color) end,
+
+    ---Returns a pixel iterator for the whole image or the given rectangle
+    ---@param image self
+    ---@param rectangle? Rectangle
+    ---@return fun(): integer | fun(integer) | {x: integer, y: integer} accessor Can be called to get pixel and set pixel (e.g. `accessor()` and `accessor(pixelValue)`), and holds x, y coordinates
+    pixels=function(image, rectangle) end,
+
+    ---Sets the pixel in the xy-coordinate to the given integer pixel value
+    ---@param image self
+    ---@param x integer
+    ---@param y integer
+    ---@param color integer
+    putPixel=function(image, x, y, color) end,
+
+    ---Copies/draws the given sourceImage image over destinationImage; If position is a point, it will draw the sourceImage in the given position
+    ---@deprecated
+    ---@param destinationImage self
+    ---@param sourceImage Image
+    ---@param position? Point
+    putImage=function(destinationImage, sourceImage, position) end,
+
+    ---Draws the given sourceSprite frame number into the destinationImage; If position is a point, it will draw the sourceSprite in the given position
+    ---@param destinationImage self
+    ---@param sourceSprite Sprite
+    ---@param frameNumber integer
+    ---@param position Point
+    putSprite=function(destinationImage, sourceSprite, frameNumber, position) end,
+
+    ---Saves the image as a sprite in the given `filename`
+    ---@param image Image
+    ---@param filename string
+    ---@overload fun(image: Image, options: {filename: string, palette: Palette})
+    saveAs=function(image, filename) end,
+
+    ---Resizes the image; The pivot is Point(0, 0) by default
+    ---@param image self
+    ---@param width integer
+    ---@param height integer
+    ---@overload fun(image: Image, options: {width: integer, height: integer, method?: "bilinear" | "rotsprite", pivot?: Point})
+    ---@overload fun(image: Image, options: {size: Size, method?: "bilinear" | "rotsprite", pivot?: Point})
+    resize=function(image, width, height) end
+}
+
+---Creates a new `Image` instance
+---@param width integer
+---@param height integer
+---@param colorMode? ColorMode
+---@return Image
+---@overload fun(spec: ImageSpec): Image
+---@overload fun(sprite: Sprite): Image
+---@overload fun(otherImage: Image): Image
+---@overload fun(option: {fromFile: string}): Image
+function Image(width, height, colorMode) end
+
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
@@ -653,7 +770,7 @@ function Size() end
 ---@field cels Cel[] The cels the sprite has
 ---@field tags Tag[] The tags the sprite has
 ---@field slices Slice[] The slices the sprite has
----@field backgroundLayer Layer | nil The background layer
+---@field backgroundLayer Layer The background layer or `nil`
 ---@field transparentColor integer An integer that spcifies what index (`0` by default) on indexed sprites
 ---@field events Events events to associate functions that can act like listeners of specific Sprite events; see: https://www.aseprite.org/api/sprite#sprite-events
 Sprite = {
