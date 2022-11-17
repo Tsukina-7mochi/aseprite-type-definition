@@ -832,7 +832,7 @@ Range = {
 ---@field y number
 ---@field width number
 ---@field height number
-Rectanble = {
+Rectangle = {
     ---Returns true if the rectangle is empty i.e. width and/or height are 0
     ---@param rectangle Rectangle
     ---@return boolean
@@ -869,7 +869,7 @@ Rectanble = {
 ---@overload fun(x: number, y: number, width: number, height: number): Rectangle
 ---@overload fun(options: {x: number, y: number, width: number, height: number}): Rectangle
 ---@overload fun(numbers: {[1]: number, [2]: number, [3]: number, [4]: number})
-function Rectanble() end
+function Rectangle() end
 
 
 ---@class Selection
