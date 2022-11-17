@@ -852,7 +852,7 @@ Rectanble = {
     ---@param rectangle self
     ---@param otherRectangle Rectangle
     ---@return Rectangle
-    utnion=function(rectangle, otherRectangle) end
+    union=function(rectangle, otherRectangle) end
 }
 
 ---Creates a new `Rectangle` instance
