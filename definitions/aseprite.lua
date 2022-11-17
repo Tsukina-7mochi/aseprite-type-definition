@@ -717,6 +717,40 @@ Layer = {
 }
 
 
+---@class Palette
+---@field frame Frame At the moment it always return the first frame, but in a near future Aseprite will support palette changes over time (in different frames), so this field should be the frame number where this palette is displayed for first time in the sprite
+Palette = {
+    ---Changes the number of the palette colors to `ncolors`
+    ---@param palette self
+    ---@param ncolors integer
+    resize=function(palette, ncolors) end,
+
+    ---Returns the color in the given entry index (the index goes from 0 to #palette-1)
+    ---@param palette self
+    ---@param index integer
+    ---@return Color
+    getColor=function(palette, index) end,
+
+    ---Changes a palette color in the given entry index (the index goes from 0 to #palette-1)
+    ---@param palette self
+    ---@param color Color | integer
+    setColor=function(palette, color) end,
+
+    ---Saves the palette in the given `filename`
+    ---@param palette self
+    ---@param filename string
+    saveAs=function(palette, filename) end,
+}
+
+---Creates a new `Palette` instance; By default it will contain 256 colors;
+---`fromResource` is an ID specified in one of the extensions palette (e.g. `DB16`, `DB32`, `Solarized`)
+---@return Palette
+---@overload fun(numberOfColors: integer): Palette
+---@overload fun(options: {fromFile: string})
+---@overload fun(options: {fromResource: string})
+function Palette() end
+
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
