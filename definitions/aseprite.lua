@@ -413,7 +413,7 @@ function Brush() end
 ---@field hslSaturation number
 ---@field hslLightness number
 ---@field hue number The HSV hue or HSL hue depending on the kind of color
----@field saturation The HSV saturation or HSL saturation depending on the kind of color
+---@field saturation number The HSV saturation or HSL saturation depending on the kind of color
 ---@field value number The HSV Value
 ---@field lightness number The HSL Lightness
 ---@field index integer The palette index related to this color; If the color is not an index, i.e. it's RGB/HSL/HSV, the closest palette index of the current palette  (the palette of the active sprite) that matches the RGB/HSL/HSV
