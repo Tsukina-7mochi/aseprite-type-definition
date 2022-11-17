@@ -547,6 +547,30 @@ Dialog = {
 }
 
 
+---Creates a new `Dialog` isntance
+---@return Dialog
+---@overload fun(title: string): Dialog
+---@overload fun(options: {title: string, onclose: fun()}): Dialog
+function Dialog() end
+
+
+---A collection of listeners for specific events;
+---see: `app.events`, `sprite.events`
+---@class Events
+Events = {
+    ---Connects the given `function` with the given event
+    ---@param eventName string the event name/code/identifier
+    ---@param func fun()
+    ---@return integer listnerCode
+    on = function(eventName, func) end,
+
+    ---Disconnects the given function from all events in the object, or stops/breaks only the specific connection identified by listenerCode
+    ---@param listenerCode integer
+    ---@overload fun(func: fun())
+    off = function(listenerCode) end,
+}
+
+
 ---@class Frame
 ---@field sprite Sprite The sprite of this frame
 ---@field frameNumber integer The frame number; the `frame` is equal to `frame.sprite.frames[frameNumber]`
@@ -763,30 +787,6 @@ function Palette() end
 ---@overload fun(options: {x: number, y: number}): Point
 ---@overload fun(numbers: {[1]: number, [2]: number}): Point
 function Point(x, y) end
-
-
----Creates a new `Dialog` isntance
----@return Dialog
----@overload fun(title: string): Dialog
----@overload fun(options: {title: string, onclose: fun()}): Dialog
-function Dialog() end
-
-
----A collection of listeners for specific events;
----see: `app.events`, `sprite.events`
----@class Events
-Events = {
-    ---Connects the given `function` with the given event
-    ---@param eventName string the event name/code/identifier
-    ---@param func fun()
-    ---@return integer listnerCode
-    on = function(eventName, func) end,
-
-    ---Disconnects the given function from all events in the object, or stops/breaks only the specific connection identified by listenerCode
-    ---@param listenerCode integer
-    ---@overload fun(func: fun())
-    off = function(listenerCode) end,
-}
 
 
 --Creates a new `Rectangle` instance
