@@ -1098,7 +1098,7 @@ Sprite = {
     flatten=function(sprite) end,
 }
 
-
+---Creates a new sprite with `Sprite` instance
 ---@param width integer
 ---@param height integer
 ---@param colorMode? ColorMode
@@ -1110,3 +1110,13 @@ Sprite = {
 ---@ NOTE: no information for oneFrame of Sprite{ fromFile=filename, oneFrame }
 function Sprite(width, height, colorMode) end
 
+
+---Represents a tag in the timeline
+---@class Tag
+---@field sprite Sprite The sprite to which this tag belongs
+---@field fromFrame Frame The first frame where this tag starts; Note: Old versions (Aseprite v1.2.10-beta2) returned a frame number instead of a Frame object
+---@field toFrame  Frame The last Frame object where this tag ends; Note: Old versions (Aseprite v1.2.10-beta2) returned a frame number instead of a Frame object
+---@field frames integer The number of frames that this tag contain
+---@field name string The name of the tag
+---@field aniDir AniDir The Animation Direction property of the tag
+---@field color Color The user-defined color of this tag in the timeline
