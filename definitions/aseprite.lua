@@ -831,6 +831,7 @@ Rectanble = {
 ---@overload fun(otherRectangle: Rectangle): Rectangle
 ---@overload fun(x: number, y: number, width: number, height: number): Rectangle
 ---@overload fun(options: {x: number, y: number, width: number, height: number}): Rectangle
+---@overload fun(numbers: {[1]: number, [2]: number, [3]: number, [4]: number})
 function Rectanble() end
 
 
