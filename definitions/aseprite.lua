@@ -789,6 +789,35 @@ function Palette() end
 function Point(x, y) end
 
 
+---The range of selected objects;
+---It can be a list of one type of the following: layers, frames, cels, images, and colors
+---@class Range
+---@field type RangeType
+---@field isEmpty boolean Whether or not the range is empty
+---@field sprite Sprite Sprite to which the range is pointing to
+---@field layers Layer[] The table of selected layers
+---@field frames Frame[] The table of selected frames
+---@field cels Cel[] The table of selected cels
+---@field images Image[] The table of selected images (images from linked cels are counted just one time in this array)
+---@field editableImages Image[] The table of selected images in the range that are in unlocked layers (editable)
+---@field colors integer[] The table of selected palette entries in the color bar
+Range = {
+    ---Returns true if the given object (layer/frame/cel) is inside the selected range
+    ---@param range self
+    ---@param object Layer | Frame | Cel
+    contains=function(range, object) end,
+
+    ---Returns true if the given color index is selected in the color bar
+    ---@param range self
+    ---@param colorIndex integer
+    containsColor=function(range, colorIndex) end,
+
+    ---Clears the current selected range of frames/layers/cels/colors
+    ---@param range self
+    clear=function(range) end
+}
+
+
 --Creates a new `Rectangle` instance
 ---@class Rectangle
 ---@field x number
