@@ -751,6 +751,20 @@ Palette = {
 function Palette() end
 
 
+---@class Point
+---@field x number
+---@field y number
+
+---Creates a new `Point` instance
+---@param x? number Default is 0
+---@param y? number Default is 0
+---@return Point
+---@overload fun(otherPoint: Point): Point
+---@overload fun(options: {x: number, y: number}): Point
+---@overload fun(numbers: {[1]: number, [2]: number}): Point
+function Point(x, y) end
+
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
