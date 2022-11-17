@@ -687,6 +687,35 @@ function Image(width, height, colorMode) end
 function ImageSpec() end
 
 
+---@class Layer
+---@field sprite Sprite The sprite to which the layer belongs
+---@field name string
+---@field opacity integer The layer opacity, a value from 0 (transparent) to 255 (opaque)
+---@field blendMode BlendMode
+---@field layers Layer[] | nil If a layer is a group, gets the table of child layers for which the group serves as a parent
+---@field parent Sprite | Layer
+---@field stackIndex integer Tthe layer's index in its parent's layers table
+---@field isImage boolean Whether or not the layer contains cels with images
+---@field isGroup boolean Whether or not the layer is a group and has the capacity to be a parent to other layers
+---@field isTransparent boolean Whether or not a layer supports transparency
+---@field isBackground boolean Whether or not a layer is a background
+---@field isEditable boolean Whether a layer is editable (unlocked)
+---@field isVisible boolean Whether or not the layer is visible
+---@field isContinuous boolean Whether a layer biases toward linked cels when a new cel is created in the timeline
+---@field isCollapsed boolean Whether or not a group layer is collapsed, i.e., whether its child layers are hidden in the timeline
+---@field isExpanded boolean Whether or not a group layer is expanded, meaning whether its child layers are visible in the timeline
+---@field isReference boolean Whether or not the layer is a reference layer
+---@field cels boolean Cel[] Table of cels in the layer
+---@field color Color User-defined color of this layer in the timeline
+---@field data string The user-defined data related to this layer
+Layer = {
+    ---Returns a cel, if any, at the intersection of the layer and a frame
+    ---@param layer self
+    ---@param frame Frame
+    ---@overload fun(layer: self, frameNumber: Frame)
+    cel=function(layer, frame) end
+}
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
@@ -845,7 +874,7 @@ Sprite = {
 
     ---Creates a new empty layer group at the top of the layers stack
     ---@param sprite self
-    ---@return Layer[]
+    ---@return Layer
     newGroup=function(sprite) end,
 
     ---Deletes the given `layer` or the layer with the given `layerName`
