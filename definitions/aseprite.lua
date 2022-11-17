@@ -1120,3 +1120,8 @@ function Sprite(width, height, colorMode) end
 ---@field name string The name of the tag
 ---@field aniDir AniDir The Animation Direction property of the tag
 ---@field color Color The user-defined color of this tag in the timeline
+
+
+---References a drawing tool; At the moment this class is used only to get and set the active tool (`app.activeTool`), or to paint on the canvas (`tool` parameter in `app.useTool()`)
+---@class Tool
+---@field id string the identifier of the specified in the `gui.xml` file
