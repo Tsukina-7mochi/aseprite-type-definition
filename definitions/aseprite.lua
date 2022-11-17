@@ -916,6 +916,16 @@ Selection = {
 function Selection(rectangle) end
 
 
+---An object that saves the active state of the editor in a specific moment; Which active sprite, layer, frame, cel, image, etc. where in a specific moment
+---@class Site
+---@field sprite Sprite The active sprite
+---@field layer Layer The active layer
+---@field cel Cel The active cel
+---@field frame Frame The active frame
+---@field frameNumber integer The index of active frame
+---@field image  Image The active image
+
+
 ---@class Size
 ---@field width number
 ---@field height number
