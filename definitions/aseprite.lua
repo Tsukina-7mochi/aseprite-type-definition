@@ -1125,3 +1125,16 @@ function Sprite(width, height, colorMode) end
 ---References a drawing tool; At the moment this class is used only to get and set the active tool (`app.activeTool`), or to paint on the canvas (`tool` parameter in `app.useTool()`)
 ---@class Tool
 ---@field id string the identifier of the specified in the `gui.xml` file
+
+
+---Represents a version number and provides an easy way to compare if the `app.version` is greater or equal than a specific expected version
+---@class Version
+---@field major integer The first number of version
+---@field minor integer The second number of the version
+---@field patch integer The third number of the version
+---@field prereleaseLabel string Returns the pre-release label/keyword; For official releases it's an empty string, in other cases it might be "alpha", "beta", "dev", etc.
+---@field prereleaseNumber integer The pre-release version
+
+---Create a new `Version` instance from a string
+---@param verstion string
+function Version(verstion) end
