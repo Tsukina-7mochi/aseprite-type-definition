@@ -452,95 +452,95 @@ function ColorSpace() end
 ---@field bounds Rectangle The bounds of dialog
 Dialog = {
     ---Creates a button
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, text: string, selected?: boolean, focus?: boolean, onclick?: fun()}
     ---@return Dialog
     button=function(dialog, options) end,
 
     ---Creates a check box
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, text?: string, selected?: boolean, onclick?: function}
     ---@return Dialog
     check=function(dialog, options) end,
 
     ---Closes the dialog
-    ---@param dialog self
+    ---@param dialog Dialog
     close=function(dialog) end,
 
     ---Creates a color picker
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, color?: Color, onchange?: function}
     ---@return Dialog
     color=function(dialog, options) end,
 
     ---Creates a combo box/drop-down list
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, options?: string[], options?: string[], onchange?: fun()}
     ---@return Dialog
     combobox=function(dialog, options) end,
 
     ---Creates a text entry
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label: string, text: string, focus: boolean, onchange: function}
     ---@return Dialog
     entry=function(dialog, options) end,
 
     ---Creates a static label
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, text?: string}
     ---@return Dialog
     label=function(dialog, options) end,
 
     ---Changes properties of the given widget that matches the identifier
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id: string, visible?: boolean, enabled?: boolean} | {[string]: any}
     modify=function(dialog, options) end,
 
     ---Creates a new row
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {always?: boolean}
     ---@return Dialog
     ---@overload fun(): Dialog
     newrow=function(dialog, options) end,
 
     ---Creates an entry field to input a number
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, text?: string, decimals?: integer, onchange?: fun()}
     ---@return Dialog
     number=function(dialog, options) end,
 
     ---Creates a radio button
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, text?: string, selected?: boolean, onchange?: fun()}
     ---@return Dialog
     radio=function(dialog, options) end,
 
     ---Creates a separator
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, text?: string}
     ---@return Dialog
     separator=function(dialog, options) end,
 
     ---Creates a widget with a set of colors that can be clicked/picked (when mode="pick", which is the default mode) or can be sorted (when mode="sort", which is the default mode)
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, mode: "pick" | "sort", colors: Color[], onclick?: fun()}
     ---@return Dialog
     shades=function(dialog, options) end,
 
     ---Makes the dialog visible to the user
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {wait?: boolean, bounds?: Rectangle}
-    ---@overload fun(dialog: self)
+    ---@overload fun(dialog: Dialog)
     show=function(dialog, options) end,
 
     ---Creates a slider
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, min?: integer, max?: integer, value?: integer, onchange?: function, onrelease?: function}
     ---@return Dialog
     slider=function(dialog, options) end,
 
     ---Creates a text entry field + a button to select one file to open or save
-    ---@param dialog self
+    ---@param dialog Dialog
     ---@param options {id?: string, label?: string, title?: string, open?: boolean, save?: boolean, filename: string | string[], filetypes?: string[], onchange?:fun()}
     ---@return Dialog
     file=function(dialog, options) end,
@@ -589,67 +589,67 @@ Events = {
 ---@field rowStride integer Number of bytes for each row in the image
 Image = {
     ---Creates a copy of the image
-    ---@param image self
+    ---@param image Image
     ---@return Image
     clone=function(image) end,
 
     ---Cleare all pixels in the image with given color (or `image.spec.transparentColor` if no color is specified)
-    ---@param image self
+    ---@param image Image
     ---@param color? Color
     clear=function(image, color) end,
 
     ---Sets the pixel in the xy-coordinate to the given integer pixel value
-    ---@param image self
+    ---@param image Image
     ---@param x integer
     ---@param y integer
     ---@param color integer
     drawPixel=function(image, x, y, color) end,
 
     ---Returns a integer pixel value for the given xy-coordinate related to the "Image" itself
-    ---@param image self
+    ---@param image Image
     ---@param x integer
     ---@param y integer
     ---@return integer
     getPixel=function(image, x, y) end,
 
     ---Copies/draws the given sourceImage image over destinationImage; If position is a point, it will draw the sourceImage in the given position
-    ---@param destinationImage self
+    ---@param destinationImage Image
     ---@param sourceImage Image
     ---@param position? Point
     drawImage=function(destinationImage, sourceImage, position) end,
 
     ---Draws the given sourceSprite frame number into the destinationImage; If position is a point, it will draw the sourceSprite in the given position
-    ---@param destinationImage self
+    ---@param destinationImage Image
     ---@param sourceSprite Sprite
     ---@param frameNumber integer
     ---@param position Point
     drawSprite=function(destinationImage, sourceSprite, frameNumber, position) end,
 
     ---Returns true if both images looks the same (spec is equal and all pixels are the same)
-    ---@param image self
+    ---@param image Image
     ---@param otherImage Image
     ---@return boolean
     isEqual=function(image, otherImage) end,
 
     ---Returns true if all pixels in the image are equal to the transparent color
-    ---@param image self
+    ---@param image Image
     ---@return boolean
     isEmpty=function(image) end,
 
     ---Returns true if all pixels in the image are equal to the given color (which can be a pixel color or a color)
-    ---@param image self
+    ---@param image Image
     ---@param color Color | integer
     ---@return boolean
     isPlain=function(image, color) end,
 
     ---Returns a pixel iterator for the whole image or the given rectangle
-    ---@param image self
+    ---@param image Image
     ---@param rectangle? Rectangle
     ---@return fun(): integer | fun(integer) | {x: integer, y: integer} accessor Can be called to get pixel and set pixel (e.g. `accessor()` and `accessor(pixelValue)`), and holds x, y coordinates
     pixels=function(image, rectangle) end,
 
     ---Sets the pixel in the xy-coordinate to the given integer pixel value
-    ---@param image self
+    ---@param image Image
     ---@param x integer
     ---@param y integer
     ---@param color integer
@@ -657,13 +657,13 @@ Image = {
 
     ---Copies/draws the given sourceImage image over destinationImage; If position is a point, it will draw the sourceImage in the given position
     ---@deprecated
-    ---@param destinationImage self
+    ---@param destinationImage Image
     ---@param sourceImage Image
     ---@param position? Point
     putImage=function(destinationImage, sourceImage, position) end,
 
     ---Draws the given sourceSprite frame number into the destinationImage; If position is a point, it will draw the sourceSprite in the given position
-    ---@param destinationImage self
+    ---@param destinationImage Image
     ---@param sourceSprite Sprite
     ---@param frameNumber integer
     ---@param position Point
@@ -676,7 +676,7 @@ Image = {
     saveAs=function(image, filename) end,
 
     ---Resizes the image; The pivot is Point(0, 0) by default
-    ---@param image self
+    ---@param image Image
     ---@param width integer
     ---@param height integer
     ---@overload fun(image: Image, options: {width: integer, height: integer, method?: "bilinear" | "rotsprite", pivot?: Point})
@@ -734,9 +734,9 @@ function ImageSpec() end
 ---@field data string The user-defined data related to this layer
 Layer = {
     ---Returns a cel, if any, at the intersection of the layer and a frame
-    ---@param layer self
+    ---@param layer Layer
     ---@param frame Frame
-    ---@overload fun(layer: self, frameNumber: Frame)
+    ---@overload fun(layer: Layer, frameNumber: Frame)
     cel=function(layer, frame) end
 }
 
@@ -745,23 +745,23 @@ Layer = {
 ---@field frame Frame At the moment it always return the first frame, but in a near future Aseprite will support palette changes over time (in different frames), so this field should be the frame number where this palette is displayed for first time in the sprite
 Palette = {
     ---Changes the number of the palette colors to `ncolors`
-    ---@param palette self
+    ---@param palette Palette
     ---@param ncolors integer
     resize=function(palette, ncolors) end,
 
     ---Returns the color in the given entry index (the index goes from 0 to #palette-1)
-    ---@param palette self
+    ---@param palette Palette
     ---@param index integer
     ---@return Color
     getColor=function(palette, index) end,
 
     ---Changes a palette color in the given entry index (the index goes from 0 to #palette-1)
-    ---@param palette self
+    ---@param palette Palette
     ---@param color Color | integer
     setColor=function(palette, color) end,
 
     ---Saves the palette in the given `filename`
-    ---@param palette self
+    ---@param palette Palette
     ---@param filename string
     saveAs=function(palette, filename) end,
 }
@@ -803,17 +803,17 @@ function Point(x, y) end
 ---@field colors integer[] The table of selected palette entries in the color bar
 Range = {
     ---Returns true if the given object (layer/frame/cel) is inside the selected range
-    ---@param range self
+    ---@param range Range
     ---@param object Layer | Frame | Cel
     contains=function(range, object) end,
 
     ---Returns true if the given color index is selected in the color bar
-    ---@param range self
+    ---@param range Range
     ---@param colorIndex integer
     containsColor=function(range, colorIndex) end,
 
     ---Clears the current selected range of frames/layers/cels/colors
-    ---@param range self
+    ---@param range Range
     clear=function(range) end
 }
 
@@ -826,30 +826,30 @@ Range = {
 ---@field height number
 Rectanble = {
     ---Returns true if the rectangle is empty i.e. width and/or height are 0
-    ---@param rectangle self
+    ---@param rectangle Rectangle
     ---@return boolean
     isEmpty=function(rectangle) end,
 
     ---Returns true if `otherRectangle` is inside `rectangle`
-    ---@param rectangle self
+    ---@param rectangle Rectangle
     ---@param otherRectangle Rectangle
     ---@return boolean
     contains=function(rectangle, otherRectangle) end,
 
     ---Returns true if `rectangle` intersects in some way `otherRectangle`
-    ---@param rectangle self
+    ---@param rectangle Rectangle
     ---@param otherRectangle Rectangle
     ---@return boolean
     intersects=function(rectangle, otherRectangle) end,
 
     ---Returns the new rectangle which is the intersection of `rectangle` and `otherRectangle`; If both rectangles don't intersect each other, the result will be an empty rectangle
-    ---@param rectangle self
+    ---@param rectangle Rectangle
     ---@param otherRectangle Rectangle
     ---@return Rectangle
     intersect=function(rectangle, otherRectangle) end,
 
     ---Returns the new rectangle which will be a rectangle big enough to contains both given rectangles `rectangle` and `otherRectangle`
-    ---@param rectangle self
+    ---@param rectangle Rectangle
     ---@param otherRectangle Rectangle
     ---@return Rectangle
     union=function(rectangle, otherRectangle) end
@@ -950,90 +950,90 @@ function Size() end
 ---@field events Events events to associate functions that can act like listeners of specific Sprite events; see: https://www.aseprite.org/api/sprite#sprite-events
 Sprite = {
     ---Resizes the sprite (and all frames/cels)
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param width integer
     ---@param height integer
-    ---@overload fun(sprite: self, size: Size)
+    ---@overload fun(sprite: Sprite, size: Size)
     resize=function(sprite, width, height) end,
 
     ---Crops the sprite
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param x integer
     ---@param y integer
     ---@param width integer
     ---@param height integer
-    ---@overload fun(sprite: self, rectangle: Rectangle)
+    ---@overload fun(sprite: Sprite, rectangle: Rectangle)
     crop=function(sprite, x, y, width, height) end,
 
     ---Saves the sprite to the given file and mark the sprite as saved
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param filename string
     saveAs=function(sprite, filename) end,
 
     ---Saves a copy of the sprite in the given file but doesn't change the saved state of the sprite
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param filename string
     saveCopyAs=function(sprite, filename) end,
 
     ---Closes the sprite; This doesn't ask the user to save changes; see: app.command.CloseFile()
-    ---@param sprite self
+    ---@param sprite Sprite
     close=function(sprite) end,
 
     ---Sets the sprite palette loading it from the given file
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param filename string
     loadPalette=function(sprite, filename) end,
 
     ---Changes the sprite palette
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param palette Palette
     setPalette=function(sprite, palette) end,
 
     ---Assign a new color space to the sprite without modifying the sprite pixels
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param colorSpace ColorSpace
     assignColorSpace=function(sprite, colorSpace) end,
 
     ---Converts all the sprite pixels to a new color space so the image looks the same as in the previous color space
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param ColorSpace ColorSpace
     convertColorSpace=function(sprite, ColorSpace) end,
 
     ---Creates a new layer at the top of the layers stack
-    ---@param sprite self
+    ---@param sprite Sprite
     newLayer=function(sprite) end,
 
     ---Creates a new empty layer group at the top of the layers stack
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@return Layer
     newGroup=function(sprite) end,
 
     ---Deletes the given `layer` or the layer with the given `layerName`
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param layer Layer
-    ---@overload fun(sprite: self, layerName: string)
+    ---@overload fun(sprite: Sprite, layerName: string)
     deleteLayer=function(sprite, layer) end,
 
     ---Creates a copy of the given `frame` object or frame number and returns a `Frame` that points to the newly created frame in `frameNumber` position
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param frame Frame
     ---@return Frame
-    ---@overload fun(sprite: self, frameNumber: integer): Frame
+    ---@overload fun(sprite: Sprite, frameNumber: integer): Frame
     newFrame=function(sprite, frame) end,
 
     ---Creates a new empty frame in the given `frameNumber`
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param frameNumber integer
     ---@return Frame
     newEmptyFrame=function(sprite, frameNumber) end,
 
     ---Deletes the given `frame`
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param frame Frame
     deleteFrame=function(sprite, frame) end,
 
     ---Creates a new cel in the given `layer` and `frame` number. If the image is not specified, a new image will be created with the size of the sprite canvas. The position is a point to locate the image.
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param layer Layer
     ---@param frame? Frame
     ---@param image? Image
@@ -1042,38 +1042,38 @@ Sprite = {
     newCel=function(sprite, layer, frame, image, position) end,
 
     ---Deletes the given `cel`; If the cel is from a transparent layer, the cel is completely deleted, but if the cel is from a background layer, the cel will be delete with the background color
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param cel Cel
-    ---@overload fun(sprite: self, layer: Layer, frame: Frame)
+    ---@overload fun(sprite: Sprite, layer: Layer, frame: Frame)
     deleteCel=function(sprite, cel) end,
 
     ---Creates a new tag in the given frame range and with the given name
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param fromFrameNumber integer
     ---@param toFrameNumber integer
     ---@return Tag
     newTag=function(sprite, fromFrameNumber, toFrameNumber) end,
 
     ---Deletes the given `tag`
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param tag Tag
-    ---@overload fun(sprite: self, tagName: string)
+    ---@overload fun(sprite: Sprite, tagName: string)
     deleteTag=function(sprite, tag) end,
 
     ---Creates a new slice
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param rectangle? Rectangle
     ---@return Slice
     newSlice=function(sprite, rectangle) end,
 
     ---Deletes the given `slice`
-    ---@param sprite self
+    ---@param sprite Sprite
     ---@param slice Slice
-    ---@overload fun(sprite: self, sliceName: string)
+    ---@overload fun(sprite: Sprite, sliceName: string)
     deleteSlice=function(sprite, slice) end,
 
     ---Flatten all layers of the sprite into one layer; as the same as `app.commands.FlattenLayers()`
-    ---@param sprite self
+    ---@param sprite Sprite
     flatten=function(sprite) end,
 }
 
