@@ -716,6 +716,7 @@ Layer = {
     cel=function(layer, frame) end
 }
 
+
 ---Creates a new `Dialog` isntance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
