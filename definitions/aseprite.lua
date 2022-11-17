@@ -284,12 +284,20 @@ FilterChannels = {
 
 
 ---Ink
+---@class Ink
+
+---Ink
 Ink = {
-    SIMPLE=undefined --[[@as 0 | "simple"]],
-    ALPHA_COMPOSTING=undefined --[[@as 1 | "alpha_composting" | "alpha-composting"]],
-    COPY_COLOR=undefined --[[@as 2 | "copy_color" | "copy-color"]],
-    LOCK_ALPHA=undefined --[[@as 3 | "lock_alpha" | "lock-alpha"]],
-    SHADING=undefined --[[@as 4 | "shading"]]
+    --- shold be 0 or "simple"
+    SIMPLE=undefined --[[@as Ink]],
+    ---shold be 1 or "alpha_composting", "alpha-composting"
+    ALPHA_COMPOSTING=undefined --[[@as Ink]],
+    ---shold be 2 or "copy_color", "copy-color"
+    COPY_COLOR=undefined --[[@as Ink]],
+    ---shold be 3 or "lock_alpha", "lock-alpha"
+    LOCK_ALPHA=undefined --[[@as Ink]],
+    ---shold be 4 or "shading"
+    SHADING=undefined --[[@as Ink]]
 }
 
 
