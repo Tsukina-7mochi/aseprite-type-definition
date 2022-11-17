@@ -926,6 +926,17 @@ function Selection(rectangle) end
 ---@field image  Image The active image
 
 
+---An object that allows for nine-slice scaling; Can be created with the slice tool or with Sprite:newSlice
+---@class Slice
+---@field bounds Rectangle The slice's bounding rectangle
+---@field center Rectangle The central rectangle of a slice's nine-slice; The getter returns nil when nine-slicing is inactive in Aseprite's user interface
+---@field color Color The user-defined color of this slice in the timeline
+---@field data string The user-defined data related to this slice
+---@field name string The slice's name
+---@field pivot Point The slice's pivot
+---@field sprite Sprite The sprite to which a slice belongs
+
+
 ---@class Size
 ---@field width number
 ---@field height number
