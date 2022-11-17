@@ -864,6 +864,58 @@ Rectanble = {
 function Rectanble() end
 
 
+---@class Selection
+---@field bounds Rectangle A rectangle with the bounds of the selection
+---@field origin Point The selection origin/position
+Selection = {
+    ---Returns true if the selection is empty i.e. there are no pixels selected
+    ---@param selection Selection
+    isEmpty=function(selection) end,
+
+    ---Deselects the selection
+    ---@param selection Selection
+    deselect=function(selection) end,
+
+    ---Replaces the selection with the given rectangle
+    ---@param selection Selection
+    ---@param rectangle Rectangle
+    select=function(selection, rectangle) end,
+
+    ---Selected the whole sprite canvas; Only valid for a sprite.selection
+    ---@param selection Selection
+    selectAll=function(selection) end,
+
+    ---Adds a new `rectangle` (or `otherSelection`) to the selection
+    ---@param selection Selection
+    ---@param rectangle Rectangle
+    ---@overload fun(selection: Selection, otherSelection: Selection)
+    add=function(selection, rectangle) end,
+
+    ---Subtracts the given `rectangle` (or `otherSelection`) from `selection`
+    ---@param selection Selection
+    ---@param rectangle Rectangle
+    ---@overload fun(selection: Selection, otherSelection: Selection)
+    subtract=function(selection, rectangle) end,
+
+    ---Creates an intersection in `selection` between the given `rectangle` (or `otherSelection`)
+    ---@param selection Selection
+    ---@param rectangle Rectangle
+    ---@overload fun(selection: Selection, otherSelection: Selection)
+    intersect=function(selection, rectangle) end,
+
+    ---Returns true or false if the given point is inside the selection
+    ---@param selection Selection
+    ---@param point Point
+    ---@return boolean
+    contains=function(selection, point) end,
+}
+
+---Creates a new Selection
+---@param rectangle? Rectangle
+---@return Selection
+function Selection(rectangle) end
+
+
 ---@class Size
 ---@field width number
 ---@field height number
