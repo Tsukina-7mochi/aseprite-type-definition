@@ -1146,3 +1146,37 @@ function Sprite(width, height, colorMode) end
 ---Create a new `Version` instance from a string
 ---@param verstion string
 function Version(verstion) end
+
+
+---WebSocket
+---@class WebSocket
+---@field url string Address of the server (read-only)
+WebSocket = {
+    ---Try connecting to the server
+    ---@param webSocket WebSocket
+    connect=function(webSocket) end,
+
+    ---Disconnects from the server
+    ---@param webSocket WebSocket
+    close=function(webSocket) end,
+
+    ---Sends a text message to the server; If multiple strings are passed, they will be joined togethercomment
+    ---@param webSocket WebSocket
+    ---@param ... string
+    sendText=function(webSocket, ...) end,
+
+    ---Sends a binary message to the server
+    ---@param webSocket WebSocket
+    ---@param ... string
+    sendBinary=function(webSocket, ...) end,
+
+    ---Sends a very short ping message to the server; There's a limit to the length of data that can be sent
+    ---@param webSocket WebSocket
+    ---@param str string
+    sendPing=function(webSocket, str) end
+}
+
+---Creates as websocket client
+---@param options? {url: string, onreceive: fun(message: string, data: string), deflate: boolean, minreconnectwait: integer, maxreconnectwait: integer}
+---@return WebSocket
+function WebSocket(options) end
