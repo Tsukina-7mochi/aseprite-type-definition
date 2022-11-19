@@ -531,7 +531,7 @@ Dialog = {
 
     ---Creates a widget with a set of colors that can be clicked/picked (when mode="pick", which is the default mode) or can be sorted (when mode="sort", which is the default mode)
     ---@param dialog Dialog
-    ---@param options {id?: string, label?: string, mode: "pick" | "sort", colors: Color[], onclick?: fun()}
+    ---@param options {id?: string, label?: string, mode: "pick" | "sort", colors: Color[], onclick?: fun(event: {color: Color, button: MouseButton})}
     ---@return Dialog
     shades=function(dialog, options) end,
 
@@ -603,7 +603,7 @@ Image = {
 
     ---Cleare all pixels in the image with given color (or `image.spec.transparentColor` if no color is specified)
     ---@param image Image
-    ---@param color? Color
+    ---@param color? Color | integer
     clear=function(image, color) end,
 
     ---Sets the pixel in the xy-coordinate to the given integer pixel value
@@ -630,7 +630,7 @@ Image = {
     ---@param destinationImage Image
     ---@param sourceSprite Sprite
     ---@param frameNumber integer
-    ---@param position Point
+    ---@param position? Point
     drawSprite=function(destinationImage, sourceSprite, frameNumber, position) end,
 
     ---Returns true if both images looks the same (spec is equal and all pixels are the same)
@@ -722,8 +722,8 @@ function ImageSpec() end
 ---@class Layer
 ---@field sprite Sprite The sprite to which the layer belongs
 ---@field name string
----@field opacity integer The layer opacity, a value from 0 (transparent) to 255 (opaque)
----@field blendMode BlendMode
+---@field opacity integer | nil The layer opacity, a value from 0 (transparent) to 255 (opaque), or `nil` if the `layer` is a group
+---@field blendMode BlendMode | nil The blend mode of the layer, or `nil` if the `layer` is a group
 ---@field layers Layer[] | nil If a layer is a group, gets the table of child layers for which the group serves as a parent
 ---@field parent Sprite | Layer
 ---@field stackIndex integer Tthe layer's index in its parent's layers table
@@ -744,10 +744,10 @@ Layer = {
     ---Returns a cel, if any, at the intersection of the layer and a frame
     ---@param layer Layer
     ---@param frame Frame
-    ---@overload fun(layer: Layer, frameNumber: Frame)
+    ---@return Cel | nil
+    ---@overload fun(layer: Layer, frameNumber: integer): Cel | nil
     cel=function(layer, frame) end
 }
-
 
 ---@class Palette
 ---@field frame Frame At the moment it always return the first frame, but in a near future Aseprite will support palette changes over time (in different frames), so this field should be the frame number where this palette is displayed for first time in the sprite
@@ -765,8 +765,9 @@ Palette = {
 
     ---Changes a palette color in the given entry index (the index goes from 0 to #palette-1)
     ---@param palette Palette
+    ---@param index integer
     ---@param color Color | integer
-    setColor=function(palette, color) end,
+    setColor=function(palette, index, color) end,
 
     ---Saves the palette in the given `filename`
     ---@param palette Palette
@@ -970,6 +971,7 @@ function Size() end
 ---@field spec ImageSpec The specification for image in this sprite
 ---@field frames Frame[] The frames the sprite has
 ---@field palettes Palette[] The palettes the sprite has
+---@field colorSpace ColorSpace The color space of the sprite
 ---@field layers Layer[] The layer the sprite has
 ---@field cels Cel[] The cels the sprite has
 ---@field tags Tag[] The tags the sprite has
@@ -1030,6 +1032,7 @@ Sprite = {
 
     ---Creates a new layer at the top of the layers stack
     ---@param sprite Sprite
+    ---@return Layer
     newLayer=function(sprite) end,
 
     ---Creates a new empty layer group at the top of the layers stack
@@ -1050,9 +1053,9 @@ Sprite = {
     ---@overload fun(sprite: Sprite, frameNumber: integer): Frame
     newFrame=function(sprite, frame) end,
 
-    ---Creates a new empty frame in the given `frameNumber`
+    ---Creates a new empty frame in the given `frameNumber` (default: #sprite.frames + 1)
     ---@param sprite Sprite
-    ---@param frameNumber integer
+    ---@param frameNumber? integer
     ---@return Frame
     newEmptyFrame=function(sprite, frameNumber) end,
 
@@ -1064,7 +1067,7 @@ Sprite = {
     ---Creates a new cel in the given `layer` and `frame` number. If the image is not specified, a new image will be created with the size of the sprite canvas. The position is a point to locate the image.
     ---@param sprite Sprite
     ---@param layer Layer
-    ---@param frame? Frame
+    ---@param frame? Frame | integer
     ---@param image? Image
     ---@param position? Point
     ---@return Cel
