@@ -765,8 +765,9 @@ Palette = {
 
     ---Changes a palette color in the given entry index (the index goes from 0 to #palette-1)
     ---@param palette Palette
+    ---@param index integer
     ---@param color Color | integer
-    setColor=function(palette, color) end,
+    setColor=function(palette, index, color) end,
 
     ---Saves the palette in the given `filename`
     ---@param palette Palette
