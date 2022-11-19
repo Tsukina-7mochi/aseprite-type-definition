@@ -1030,6 +1030,7 @@ Sprite = {
 
     ---Creates a new layer at the top of the layers stack
     ---@param sprite Sprite
+    ---@return Layer
     newLayer=function(sprite) end,
 
     ---Creates a new empty layer group at the top of the layers stack
