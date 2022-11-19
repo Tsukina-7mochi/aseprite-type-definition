@@ -723,7 +723,7 @@ function ImageSpec() end
 ---@field sprite Sprite The sprite to which the layer belongs
 ---@field name string
 ---@field opacity integer The layer opacity, a value from 0 (transparent) to 255 (opaque)
----@field blendMode BlendMode
+---@field blendMode BlendMode | nil The blend mode of the layer, `nil` if the `layer` is a group
 ---@field layers Layer[] | nil If a layer is a group, gets the table of child layers for which the group serves as a parent
 ---@field parent Sprite | Layer
 ---@field stackIndex integer Tthe layer's index in its parent's layers table
