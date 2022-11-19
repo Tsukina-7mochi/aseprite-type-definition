@@ -744,10 +744,9 @@ Layer = {
     ---Returns a cel, if any, at the intersection of the layer and a frame
     ---@param layer Layer
     ---@param frame Frame
-    ---@overload fun(layer: Layer, frameNumber: Frame)
+    ---@overload fun(layer: Layer, frameNumber: integer)
     cel=function(layer, frame) end
 }
-
 
 ---@class Palette
 ---@field frame Frame At the moment it always return the first frame, but in a near future Aseprite will support palette changes over time (in different frames), so this field should be the frame number where this palette is displayed for first time in the sprite
