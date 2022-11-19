@@ -1052,9 +1052,9 @@ Sprite = {
     ---@overload fun(sprite: Sprite, frameNumber: integer): Frame
     newFrame=function(sprite, frame) end,
 
-    ---Creates a new empty frame in the given `frameNumber`
+    ---Creates a new empty frame in the given `frameNumber` (default: #sprite.frames + 1)
     ---@param sprite Sprite
-    ---@param frameNumber integer
+    ---@param frameNumber? integer
     ---@return Frame
     newEmptyFrame=function(sprite, frameNumber) end,
 
