@@ -744,7 +744,8 @@ Layer = {
     ---Returns a cel, if any, at the intersection of the layer and a frame
     ---@param layer Layer
     ---@param frame Frame
-    ---@overload fun(layer: Layer, frameNumber: integer)
+    ---@return Cel | nil
+    ---@overload fun(layer: Layer, frameNumber: integer): Cel | nil
     cel=function(layer, frame) end
 }
 
