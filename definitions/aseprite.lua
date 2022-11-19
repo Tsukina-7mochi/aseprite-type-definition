@@ -630,7 +630,7 @@ Image = {
     ---@param destinationImage Image
     ---@param sourceSprite Sprite
     ---@param frameNumber integer
-    ---@param position Point
+    ---@param position? Point
     drawSprite=function(destinationImage, sourceSprite, frameNumber, position) end,
 
     ---Returns true if both images looks the same (spec is equal and all pixels are the same)
