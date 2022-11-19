@@ -1065,7 +1065,7 @@ Sprite = {
     ---Creates a new cel in the given `layer` and `frame` number. If the image is not specified, a new image will be created with the size of the sprite canvas. The position is a point to locate the image.
     ---@param sprite Sprite
     ---@param layer Layer
-    ---@param frame? Frame
+    ---@param frame? Frame | integer
     ---@param image? Image
     ---@param position? Point
     ---@return Cel
