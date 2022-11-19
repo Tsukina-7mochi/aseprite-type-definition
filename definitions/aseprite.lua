@@ -970,6 +970,7 @@ function Size() end
 ---@field spec ImageSpec The specification for image in this sprite
 ---@field frames Frame[] The frames the sprite has
 ---@field palettes Palette[] The palettes the sprite has
+---@field colorSpace ColorSpace The color space of the sprite
 ---@field layers Layer[] The layer the sprite has
 ---@field cels Cel[] The cels the sprite has
 ---@field tags Tag[] The tags the sprite has
