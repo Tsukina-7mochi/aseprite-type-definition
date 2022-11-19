@@ -603,7 +603,7 @@ Image = {
 
     ---Cleare all pixels in the image with given color (or `image.spec.transparentColor` if no color is specified)
     ---@param image Image
-    ---@param color? Color
+    ---@param color? Color | integer
     clear=function(image, color) end,
 
     ---Sets the pixel in the xy-coordinate to the given integer pixel value
