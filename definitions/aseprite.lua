@@ -531,7 +531,7 @@ Dialog = {
 
     ---Creates a widget with a set of colors that can be clicked/picked (when mode="pick", which is the default mode) or can be sorted (when mode="sort", which is the default mode)
     ---@param dialog Dialog
-    ---@param options {id?: string, label?: string, mode: "pick" | "sort", colors: Color[], onclick?: fun()}
+    ---@param options {id?: string, label?: string, mode: "pick" | "sort", colors: Color[], onclick?: fun(event: {color: Color, button: MouseButton})}
     ---@return Dialog
     shades=function(dialog, options) end,
 
