@@ -1148,6 +1148,7 @@ function Sprite(width, height, colorMode) end
 
 ---Create a new `Version` instance from a string
 ---@param verstion string
+---@return Version
 function Version(verstion) end
 
 
