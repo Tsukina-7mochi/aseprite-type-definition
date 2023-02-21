@@ -59,9 +59,11 @@ app = {
         graya=function(gray, alpha) end,
         ---Returns the gray component
         ---@param grayPixelValue integer 16-bit integer
+        ---@return integer
         grayaV=function(grayPixelValue) end,
         ---Returns the alpha component
         ---@param grayPixelValue integer 16-bit integer
+        ---@return integer
         grayaA=function(grayPixelValue) end
     },
     ---The Aseprite version number (e.g. Version("1.2.10-beta1"))
