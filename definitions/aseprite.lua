@@ -567,7 +567,7 @@ Events = {
     ---Connects the given `function` with the given event
     ---@param eventName string the event name/code/identifier
     ---@param func fun()
-    ---@return integer listnerCode
+    ---@return integer listenerCode
     on = function(eventName, func) end,
 
     ---Disconnects the given function from all events in the object, or stops/breaks only the specific connection identified by listenerCode
