@@ -486,7 +486,7 @@ Dialog = {
 
     ---Creates a combo box/drop-down list
     ---@param dialog Dialog
-    ---@param options {id?: string, label?: string, options?: string[], options?: string[], onchange?: fun()}
+    ---@param options {id?: string, label?: string, option?: string, options?: string[], onchange?: fun()}
     ---@return Dialog
     combobox=function(dialog, options) end,
 
