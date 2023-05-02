@@ -553,7 +553,7 @@ Dialog = {
 }
 
 
----Creates a new `Dialog` isntance
+---Creates a new `Dialog` instance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
 ---@overload fun(options: {title: string, onclose: fun()}): Dialog
