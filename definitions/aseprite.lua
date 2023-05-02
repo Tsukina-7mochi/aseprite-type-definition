@@ -226,6 +226,7 @@ BlendMode = {
     EXCLUSION=undefined --[[@as BlendMode]],
     HSL_HUE=undefined --[[@as BlendMode]],
     HSL_SATURATION=undefined --[[@as BlendMode]],
+    HSL_COLOR=undefined --[[@as BlendMode]],
     HSL_LUMINOSITY=undefined --[[@as BlendMode]],
     ADDITION=undefined --[[@as BlendMode]],
     SUBTRACT=undefined --[[@as BlendMode]],
