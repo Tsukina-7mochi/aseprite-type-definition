@@ -832,10 +832,10 @@ Range = {
 
 --Creates a new `Rectangle` instance
 ---@class Rectangle
----@field x number
----@field y number
----@field width number
----@field height number
+---@field x integer
+---@field y integer
+---@field width integer
+---@field height integer
 Rectangle = {
     ---Returns true if the rectangle is empty i.e. width and/or height are 0
     ---@param rectangle Rectangle
@@ -870,9 +870,9 @@ Rectangle = {
 ---Creates a new `Rectangle` instance
 ---@return Rectangle
 ---@overload fun(otherRectangle: Rectangle): Rectangle
----@overload fun(x: number, y: number, width: number, height: number): Rectangle
----@overload fun(options: {x: number, y: number, width: number, height: number}): Rectangle
----@overload fun(numbers: {[1]: number, [2]: number, [3]: number, [4]: number})
+---@overload fun(x: integer, y: integer, width: integer, height: integer): Rectangle
+---@overload fun(options: {x: integer, y: integer, width: integer, height: integer}): Rectangle
+---@overload fun(numbers: {[1]: integer, [2]: integer, [3]: integer, [4]: integer})
 function Rectangle() end
 
 
