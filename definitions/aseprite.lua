@@ -162,7 +162,7 @@ app = {
         ---@return boolean
         isDirectory=function(fn) end,
         ---Returns the file size of the given filename `fn`
-        ---@param fn string filenmae
+        ---@param fn string filename
         ---@return integer
         fileSize=function(fn) end,
         ---Returns a list of files in the given directory path;  The returned value is a table where each element is a file name, each file name is relative to the given path
