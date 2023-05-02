@@ -13,7 +13,7 @@ app = {
     range=undefined --[[@as Range]],
     ---The active cel
     activeCel=undefined --[[@as Cel]],
-    ---The active frame numbe
+    ---The active frame number
     activeFrame=undefined --[[@as integer]],
     ---The active image
     activeImage=undefined --[[@as Image]],
