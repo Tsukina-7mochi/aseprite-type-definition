@@ -1163,7 +1163,7 @@ WebSocket = {
     ---@param webSocket WebSocket
     close=function(webSocket) end,
 
-    ---Sends a text message to the server; If multiple strings are passed, they will be joined togethercomment
+    ---Sends a text message to the server; If multiple strings are passed, they will be joined together
     ---@param webSocket WebSocket
     ---@param ... string
     sendText=function(webSocket, ...) end,
