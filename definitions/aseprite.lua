@@ -976,7 +976,7 @@ function Size() end
 ---@field tags Tag[] The tags the sprite has
 ---@field slices Slice[] The slices the sprite has
 ---@field backgroundLayer Layer The background layer or `nil`
----@field transparentColor integer An integer that spcifies what index (`0` by default) on indexed sprites
+---@field transparentColor integer An integer that specifies what index (`0` by default) on indexed sprites
 ---@field events Events events to associate functions that can act like listeners of specific Sprite events; see: https://www.aseprite.org/api/sprite#sprite-events
 Sprite = {
     ---Resizes the sprite (and all frames/cels)
