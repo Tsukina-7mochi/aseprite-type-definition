@@ -385,7 +385,7 @@ WebSocketMessageType = {
 ---@field pattern BrushPattern
 ---@field patternOrigin Point
 
----Creates a new `Braush` instance
+---Creates a new `Brush` instance
 ---@return Brush
 ---@overload fun(size: Size): Brush
 ---@overload fun(image: Image): Brush
