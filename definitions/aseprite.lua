@@ -788,16 +788,16 @@ function Palette() end
 
 
 ---@class Point
----@field x number
----@field y number
+---@field x integer
+---@field y integer
 
 ---Creates a new `Point` instance
----@param x? number Default is 0
----@param y? number Default is 0
+---@param x? integer Default is 0
+---@param y? integer Default is 0
 ---@return Point
 ---@overload fun(otherPoint: Point): Point
----@overload fun(options: {x: number, y: number}): Point
----@overload fun(numbers: {[1]: number, [2]: number}): Point
+---@overload fun(options: {x: integer, y: integer}): Point
+---@overload fun(numbers: {[1]: integer, [2]: integer}): Point
 function Point(x, y) end
 
 
