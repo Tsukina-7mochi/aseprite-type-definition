@@ -1031,8 +1031,8 @@ Sprite = {
 
     ---Converts all the sprite pixels to a new color space so the image looks the same as in the previous color space
     ---@param sprite Sprite
-    ---@param ColorSpace ColorSpace
-    convertColorSpace=function(sprite, ColorSpace) end,
+    ---@param colorSpace ColorSpace
+    convertColorSpace=function(sprite, colorSpace) end,
 
     ---Creates a new layer at the top of the layers stack
     ---@param sprite Sprite
