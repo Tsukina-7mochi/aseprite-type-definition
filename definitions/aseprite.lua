@@ -919,6 +919,7 @@ Selection = {
     ---@param selection Selection
     ---@param point Point
     ---@return boolean
+    ---@overload fun(selection: Selection, x: integer, y: integer)
     contains=function(selection, point) end,
 }
 
