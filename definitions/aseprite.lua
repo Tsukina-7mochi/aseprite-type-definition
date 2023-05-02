@@ -1146,9 +1146,9 @@ function Sprite(width, height, colorMode) end
 ---@field prereleaseNumber integer The pre-release version
 
 ---Create a new `Version` instance from a string
----@param verstion string
+---@param version string
 ---@return Version
-function Version(verstion) end
+function Version(version) end
 
 
 ---WebSocket
