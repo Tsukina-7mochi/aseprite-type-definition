@@ -951,15 +951,15 @@ function Selection(rectangle) end
 
 
 ---@class Size
----@field width number
----@field height number
+---@field width integer
+---@field height integer
 
 ---Creates a new `Size` instance with the given dimensions (or width=height=0 if they are not specified)
 ---@return Size
 ---@overload fun(otherSize: Size): Size
----@overload fun(width: number, height: number): Size
----@overload fun(options: {width: number, height: number}): Size
----@overload fun(options: number[]): Size
+---@overload fun(width: integer, height: integer): Size
+---@overload fun(options: {width: integer, height: integer}): Size
+---@overload fun(numbers: {[1]: integer, [2]: integer}): Size
 function Size() end
 
 
