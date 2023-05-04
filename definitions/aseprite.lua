@@ -13,8 +13,8 @@ app = {
     range=undefined --[[@as Range]],
     ---The active cel
     activeCel=undefined --[[@as Cel]],
-    ---The active frame numbe
-    activeFrame=undefined --[[@as integer]],
+    ---The active frame number
+    activeFrame=undefined --[[@as Frame]],
     ---The active image
     activeImage=undefined --[[@as Image]],
     ---The active layer
@@ -162,7 +162,7 @@ app = {
         ---@return boolean
         isDirectory=function(fn) end,
         ---Returns the file size of the given filename `fn`
-        ---@param fn string filenmae
+        ---@param fn string filename
         ---@return integer
         fileSize=function(fn) end,
         ---Returns a list of files in the given directory path;  The returned value is a table where each element is a file name, each file name is relative to the given path
@@ -226,6 +226,7 @@ BlendMode = {
     EXCLUSION=undefined --[[@as BlendMode]],
     HSL_HUE=undefined --[[@as BlendMode]],
     HSL_SATURATION=undefined --[[@as BlendMode]],
+    HSL_COLOR=undefined --[[@as BlendMode]],
     HSL_LUMINOSITY=undefined --[[@as BlendMode]],
     ADDITION=undefined --[[@as BlendMode]],
     SUBTRACT=undefined --[[@as BlendMode]],
@@ -290,15 +291,10 @@ FilterChannels = {
 
 ---Ink
 Ink = {
-    --- shold be 0 or "simple"
     SIMPLE=undefined --[[@as Ink]],
-    ---shold be 1 or "alpha_composting", "alpha-composting"
     ALPHA_COMPOSTING=undefined --[[@as Ink]],
-    ---shold be 2 or "copy_color", "copy-color"
     COPY_COLOR=undefined --[[@as Ink]],
-    ---shold be 3 or "lock_alpha", "lock-alpha"
     LOCK_ALPHA=undefined --[[@as Ink]],
-    ---shold be 4 or "shading"
     SHADING=undefined --[[@as Ink]]
 }
 
@@ -389,7 +385,7 @@ WebSocketMessageType = {
 ---@field pattern BrushPattern
 ---@field patternOrigin Point
 
----Creates a new `Braush` instance
+---Creates a new `Brush` instance
 ---@return Brush
 ---@overload fun(size: Size): Brush
 ---@overload fun(image: Image): Brush
@@ -485,7 +481,7 @@ Dialog = {
 
     ---Creates a combo box/drop-down list
     ---@param dialog Dialog
-    ---@param options {id?: string, label?: string, options?: string[], options?: string[], onchange?: fun()}
+    ---@param options {id?: string, label?: string, option?: string, options?: string[], onchange?: fun()}
     ---@return Dialog
     combobox=function(dialog, options) end,
 
@@ -557,7 +553,7 @@ Dialog = {
 }
 
 
----Creates a new `Dialog` isntance
+---Creates a new `Dialog` instance
 ---@return Dialog
 ---@overload fun(title: string): Dialog
 ---@overload fun(options: {title: string, onclose: fun()}): Dialog
@@ -571,7 +567,7 @@ Events = {
     ---Connects the given `function` with the given event
     ---@param eventName string the event name/code/identifier
     ---@param func fun()
-    ---@return integer listnerCode
+    ---@return integer listenerCode
     on = function(eventName, func) end,
 
     ---Disconnects the given function from all events in the object, or stops/breaks only the specific connection identified by listenerCode
@@ -787,16 +783,16 @@ function Palette() end
 
 
 ---@class Point
----@field x number
----@field y number
+---@field x integer
+---@field y integer
 
 ---Creates a new `Point` instance
----@param x? number Default is 0
----@param y? number Default is 0
+---@param x? integer Default is 0
+---@param y? integer Default is 0
 ---@return Point
 ---@overload fun(otherPoint: Point): Point
----@overload fun(options: {x: number, y: number}): Point
----@overload fun(numbers: {[1]: number, [2]: number}): Point
+---@overload fun(options: {x: integer, y: integer}): Point
+---@overload fun(numbers: {[1]: integer, [2]: integer}): Point
 function Point(x, y) end
 
 
@@ -831,10 +827,10 @@ Range = {
 
 --Creates a new `Rectangle` instance
 ---@class Rectangle
----@field x number
----@field y number
----@field width number
----@field height number
+---@field x integer
+---@field y integer
+---@field width integer
+---@field height integer
 Rectangle = {
     ---Returns true if the rectangle is empty i.e. width and/or height are 0
     ---@param rectangle Rectangle
@@ -869,9 +865,9 @@ Rectangle = {
 ---Creates a new `Rectangle` instance
 ---@return Rectangle
 ---@overload fun(otherRectangle: Rectangle): Rectangle
----@overload fun(x: number, y: number, width: number, height: number): Rectangle
----@overload fun(options: {x: number, y: number, width: number, height: number}): Rectangle
----@overload fun(numbers: {[1]: number, [2]: number, [3]: number, [4]: number})
+---@overload fun(x: integer, y: integer, width: integer, height: integer): Rectangle
+---@overload fun(options: {x: integer, y: integer, width: integer, height: integer}): Rectangle
+---@overload fun(numbers: {[1]: integer, [2]: integer, [3]: integer, [4]: integer})
 function Rectangle() end
 
 
@@ -918,6 +914,7 @@ Selection = {
     ---@param selection Selection
     ---@param point Point
     ---@return boolean
+    ---@overload fun(selection: Selection, x: integer, y: integer)
     contains=function(selection, point) end,
 }
 
@@ -949,15 +946,15 @@ function Selection(rectangle) end
 
 
 ---@class Size
----@field width number
----@field height number
+---@field width integer
+---@field height integer
 
 ---Creates a new `Size` instance with the given dimensions (or width=height=0 if they are not specified)
 ---@return Size
 ---@overload fun(otherSize: Size): Size
----@overload fun(width: number, height: number): Size
----@overload fun(options: {width: number, height: number}): Size
----@overload fun(options: number[]): Size
+---@overload fun(width: integer, height: integer): Size
+---@overload fun(options: {width: integer, height: integer}): Size
+---@overload fun(numbers: {[1]: integer, [2]: integer}): Size
 function Size() end
 
 
@@ -979,7 +976,7 @@ function Size() end
 ---@field tags Tag[] The tags the sprite has
 ---@field slices Slice[] The slices the sprite has
 ---@field backgroundLayer Layer The background layer or `nil`
----@field transparentColor integer An integer that spcifies what index (`0` by default) on indexed sprites
+---@field transparentColor integer An integer that specifies what index (`0` by default) on indexed sprites
 ---@field events Events events to associate functions that can act like listeners of specific Sprite events; see: https://www.aseprite.org/api/sprite#sprite-events
 Sprite = {
     ---Resizes the sprite (and all frames/cels)
@@ -1029,8 +1026,8 @@ Sprite = {
 
     ---Converts all the sprite pixels to a new color space so the image looks the same as in the previous color space
     ---@param sprite Sprite
-    ---@param ColorSpace ColorSpace
-    convertColorSpace=function(sprite, ColorSpace) end,
+    ---@param colorSpace ColorSpace
+    convertColorSpace=function(sprite, colorSpace) end,
 
     ---Creates a new layer at the top of the layers stack
     ---@param sprite Sprite
@@ -1149,9 +1146,9 @@ function Sprite(width, height, colorMode) end
 ---@field prereleaseNumber integer The pre-release version
 
 ---Create a new `Version` instance from a string
----@param verstion string
+---@param version string
 ---@return Version
-function Version(verstion) end
+function Version(version) end
 
 
 ---WebSocket
@@ -1166,7 +1163,7 @@ WebSocket = {
     ---@param webSocket WebSocket
     close=function(webSocket) end,
 
-    ---Sends a text message to the server; If multiple strings are passed, they will be joined togethercomment
+    ---Sends a text message to the server; If multiple strings are passed, they will be joined together
     ---@param webSocket WebSocket
     ---@param ... string
     sendText=function(webSocket, ...) end,
