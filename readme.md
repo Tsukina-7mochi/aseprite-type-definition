@@ -5,7 +5,10 @@
 A lua type definition for [Aseprite API](https://www.aseprite.org/api/) based on [lua-language-server](https://github.com/sumneko/lua-language-server).
 The supported API version is `18` (since Aseprite `v1.2.35`)
 
-## Usage
+## How to use in your project
 
-Put `/definitions` directory into your `library` directory. You can link the file in other ways too.
-See: https://github.com/sumneko/lua-language-server/wiki
+- Just put `/definitions` directory into your project root.
+- Add the repository as a git submodule in `(project root)/library`, and link library directory using  `.luarc.json`
+  - [Example](https://github.com/Tsukina-7mochi/aseprite-scripts)
+- You can link the file in other ways too.
+  - See: https://github.com/sumneko/lua-language-server/wiki
