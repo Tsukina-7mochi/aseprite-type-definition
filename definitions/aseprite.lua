@@ -14,7 +14,7 @@ app = {
     ---The active cel
     activeCel=undefined --[[@as Cel]],
     ---The active frame number
-    activeFrame=undefined --[[@as integer]],
+    activeFrame=undefined --[[@as Frame]],
     ---The active image
     activeImage=undefined --[[@as Image]],
     ---The active layer
