@@ -526,10 +526,11 @@ app = {
     },
 
     ---Access information about the current theme.
-    theme = Theme,
+    ---@type Theme
+    theme = undefined,
 
     ---Returns the [UI Elements Scaling](https://www.aseprite.org/docs/preferences/) value specified in *Edit > Preferences* as an scale factor (1 for 100%, 2 for 200%, etc.)
-    uiScale = {},
+    uiScale = undefined,
 
     ---This function is available just in case you see that your script updates the sprite but the screen is not showing the updated state of the sprite. It should not be needed, but it's here just in case that something is not working right on the Aseprite side.
     refresh = function() end,
@@ -1990,6 +1991,7 @@ local _image = {
     ---Do NOT confuse with the absolute *xy*-coordinate in the Canvas. In the following example, we show the differences between `getPixel()`, `Cel.bounds` and `Cel.position`:
     ---@param x integer
     ---@param y integer
+    ---@return integer
     getPixel = function(self, x, y) end,
 
     ---```lua
@@ -2448,6 +2450,7 @@ local _palette = {
 
     ---Returns the `Color` in the given entry `index` (the `index` goes from `0` to `#palette-1`).
     ---@param index integer
+    ---@return Color
     getColor = function(self, index) end,
 
     ---Changes a palette color in the given entry `index` (the `index` goes from `0` to `#palette-1`). The `color` can be a `Color` object or an integer pixel value.
