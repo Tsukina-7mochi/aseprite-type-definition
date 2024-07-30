@@ -2,13 +2,10 @@
 
 ![Demo of suggest in VSCode](https://gyazo.com/2a91bc263590356d218dbeae3209cfb8.gif)
 
-A lua type definition for [Aseprite API](https://www.aseprite.org/api/) based on [lua-language-server](https://github.com/sumneko/lua-language-server).
-The supported API version is `18` (since Aseprite `v1.2.35`)
+A lua type definition for [Aseprite API](https://www.aseprite.org/api/). The API version is `28`. Supports [lua-language-server](https://github.com/sumneko/lua-language-server).
 
-## How to use in your project
+## Installation
 
-- Just put `/definitions` directory into your project root.
-- Add the repository as a git submodule in `(project root)/library`, and link library directory using  `.luarc.json`
-  - [Example](https://github.com/Tsukina-7mochi/aseprite-scripts)
-- You can link the file in other ways too.
-  - See: https://github.com/sumneko/lua-language-server/wiki
+We recommend to put this repository in your project as Git submodule and link with `.luarc.json` ([Example](https://github.com/Tsukina-7mochi/aseprite-scripts)). Another way, you can clone this repository to your project directory and simply ignore it, or just putting definition file into your workspace.
+
+See https://github.com/sumneko/lua-language-server/wiki to find other way.
