@@ -1,7 +1,7 @@
 ---@meta
 
 --Type definition of API Version 28
---based on @aseprite/api, commit hash: 6cad8d32a8d07ba48a9cb0e198a6a2714133c293
+--based on @aseprite/api f3f89517191f09c54712bb39a64cffb0a43abab8
 
 
 ---@type unknown
@@ -2139,7 +2139,7 @@ local _image = {
 ---
 ---The `spec` parameter is an image specification object.
 ---
----If you specify `otherImage`, it's equivalent to use `otherImage:clone()`. If you specify `Image(otherImage, rectangle)` this will create a copy of the specified rectangle of `otherImage`.
+---If you specify `otherImage`, it's equivalent to use `otherImage:clone()`. If you specify `Image(otherImage, rectangle)` this will create a copy of the specified rectangle of `otherImage`. `Image(otherImage, rectangle)` may return `nil` if the `rectangle` is empty (i.e., if its width and/or height are equal to or less than zero).
 ---
 ---If a `sprite` is given, the image will be a render of the first frame of the sprite. Note: You can use `Image:drawSprite()` to draw other frame.
 ---If `fromFile` is given, it indicates a file name (a string) and
@@ -3203,13 +3203,15 @@ local _sprite = {
 ---If `otherSprite` is given (other `Sprite` object), the sprite is duplicated.
 ---
 ---If `fromFile` is given, it indicates a file name (a string) and it's like opening a new document with `app.open()`.
+---
+---When loading from a file, setting `oneFrame` to true will load with only the first animation frame.
 ---@param width integer
 ---@param height integer
 ---@param colorMode ColorMode?
 ---@return Sprite
 ---@overload fun(spec: ImageSpec): Sprite
 ---@overload fun (otherSprite: Sprite): Sprite
----@overload fun(options: { fromFile: string, oneFrame: Frame? }): Sprite
+---@overload fun(options: { fromFile: string, oneFrame: boolean? }): Sprite
 function Sprite(width, height, colorMode) end
 
 ---Represents [a tag in the timeline](https://www.aseprite.org/docs/tags/).
