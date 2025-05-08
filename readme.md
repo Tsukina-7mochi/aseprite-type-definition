@@ -6,6 +6,7 @@ A lua type definition for [Aseprite API](https://www.aseprite.org/api/). The API
 
 ## Installation
 
-We recommend to put this repository in your project as Git submodule and link with `.luarc.json` ([Example](https://github.com/Tsukina-7mochi/aseprite-scripts)). Another way, you can clone this repository to your project directory and simply ignore it, or just putting definition file into your workspace.
+The API types are defined in [./definitions/aseprite.lua](./definitions/aseprite.lua).
+You can integrate them into your workspace by copying the file, cloning the repository, or adding it as a Git submodule.
 
-See https://github.com/sumneko/lua-language-server/wiki to find other way.
+For configuration details, refer to the [Lua Language Server Wiki](https://luals.github.io/wiki/).
