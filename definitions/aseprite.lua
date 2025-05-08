@@ -286,10 +286,24 @@ app = {
     ---```
     ---
     ---Creates a new transaction so you can group several sprite modifications in just one undo/redo operation.
+    ---If a string is given as first argument, that string will be used as the label of this undo/redo action (which can be seen in the Edit > Undo History window).
+    ---The given function is called inside the transaction, if the function fails, the whole transaction is undone (i.e. all the steps executed so far will be reversed).
+    ---If the function successes, the transaction is committed and then all actions will be grouped in just one undo/redo operation.
+    ---You can cancel/reverse/cause an explicit failure of the transaction calling the error() Lua function, e.g:
     ---
-    ---The function in the argument is called inside the transaction, if the function fails, the whole transaction is undone. If the function successes, the transaction is committed and then all actions will be grouped in just one undo/redo operation.
-    ---
-    ---If a string is given as first argument, that string will be used as a label for the undo/redo action. Creates a new transaction so you can group several sprite modifications in just one undo/redo operation
+    ---```lua
+    ---app.transaction(
+    ---  function()
+    ---    ...
+    ---    if something_is_wrong then
+    ---      error() -- this stops the function and doesn't continue with the
+    ---              -- following lines / the actions so far will be reversed
+    ---              -- automatically leaving the sprite intact
+    ---    end
+    ---    ...
+    ---  end
+    ---)
+    ---```
     ---@param func fun(): any a function called inside the transaction
     ---@overload fun(label: string, func: fun(): any)
     transaction = function(func) end,
