@@ -1,0 +1,137 @@
+name: Check Source Update
+
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_REPO_URL: https://github.com/aseprite/api.git
+      COMMIT_HASH_FILE: source_commit_hash
+      PR_LABEL: source-update
+      PR_ASSIGNEE: Tsukina-7mochi
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get latest commit hash from source repository
+        id: get-hash
+        run: |
+          LATEST_HASH=$(git ls-remote ${{ env.SOURCE_REPO_URL }} HEAD | awk '{print $1}')
+          LATEST_HASH_SHORT=${LATEST_HASH:0:7}
+          echo "latest_hash=$LATEST_HASH" >> $GITHUB_OUTPUT
+          echo "latest_hash_short=$LATEST_HASH_SHORT" >> $GITHUB_OUTPUT
+          echo "Latest commit hash: $LATEST_HASH ($LATEST_HASH_SHORT)"
+
+      - name: Read current commit hash
+        id: current-hash
+        run: |
+          CURRENT_HASH=$(cat ${{ env.COMMIT_HASH_FILE }} | tr -d '\n' | tr -d ' ')
+          CURRENT_HASH_SHORT=${CURRENT_HASH:0:7}
+          echo "current_hash=$CURRENT_HASH" >> $GITHUB_OUTPUT
+          echo "current_hash_short=$CURRENT_HASH_SHORT" >> $GITHUB_OUTPUT
+          echo "Current commit hash: $CURRENT_HASH ($CURRENT_HASH_SHORT)"
+
+      - name: Check if update is needed
+        id: check
+        run: |
+          if [ "${{ steps.get-hash.outputs.latest_hash }}" != "${{ steps.current-hash.outputs.current_hash }}" ]; then
+            echo "update_needed=true" >> $GITHUB_OUTPUT
+            echo "Update needed!"
+          else
+            echo "update_needed=false" >> $GITHUB_OUTPUT
+            echo "No update needed."
+          fi
+
+      - name: Check for existing PR
+        if: steps.check.outputs.update_needed == 'true'
+        id: existing-pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list --label "${{ env.PR_LABEL }}" --state open --json number --jq '.[0].number')
+          if [ -n "$PR_NUMBER" ]; then
+            echo "pr_exists=true" >> $GITHUB_OUTPUT
+            echo "pr_number=$PR_NUMBER" >> $GITHUB_OUTPUT
+            PR_BRANCH=$(gh pr view $PR_NUMBER --json headRefName --jq '.headRefName')
+            echo "pr_branch=$PR_BRANCH" >> $GITHUB_OUTPUT
+            echo "Found existing PR #$PR_NUMBER on branch $PR_BRANCH"
+          else
+            echo "pr_exists=false" >> $GITHUB_OUTPUT
+            echo "No existing PR found"
+          fi
+
+      - name: Update commit hash file
+        if: steps.check.outputs.update_needed == 'true'
+        run: |
+          echo "${{ steps.get-hash.outputs.latest_hash }}" > ${{ env.COMMIT_HASH_FILE }}
+
+      - name: Update existing PR branch
+        if: steps.check.outputs.update_needed == 'true' && steps.existing-pr.outputs.pr_exists == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin ${{ steps.existing-pr.outputs.pr_branch }}
+          git checkout ${{ steps.existing-pr.outputs.pr_branch }}
+          git add ${{ env.COMMIT_HASH_FILE }}
+          git commit -m "chore: update source reference to ${{ steps.get-hash.outputs.latest_hash_short }}"
+          git push origin ${{ steps.existing-pr.outputs.pr_branch }}
+
+      - name: Update PR description
+        if: steps.check.outputs.update_needed == 'true' && steps.existing-pr.outputs.pr_exists == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr edit ${{ steps.existing-pr.outputs.pr_number }} \
+            --title "Update source to ${{ steps.get-hash.outputs.latest_hash_short }}" \
+            --body "$(cat <<'EOF'
+          Update source reference to ${{ steps.get-hash.outputs.latest_hash_short }}
+
+          ## Updates:
+          - Source repository: `${{ env.SOURCE_REPO_URL }}`
+          - Previous commit: `${{ steps.current-hash.outputs.current_hash_short }}`
+          - New commit: `${{ steps.get-hash.outputs.latest_hash_short }}`
+
+          Changes: ${{ env.SOURCE_REPO_URL }}/compare/${{ steps.current-hash.outputs.current_hash }}...${{ steps.get-hash.outputs.latest_hash }}
+          EOF
+          )" \
+            --add-assignee "${{ env.PR_ASSIGNEE }}"
+
+      - name: Create new PR branch
+        if: steps.check.outputs.update_needed == 'true' && steps.existing-pr.outputs.pr_exists == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH_NAME="update-${{ steps.get-hash.outputs.latest_hash_short }}"
+          git checkout -b "$BRANCH_NAME"
+          git add ${{ env.COMMIT_HASH_FILE }}
+          git commit -m "chore: update source reference to ${{ steps.get-hash.outputs.latest_hash_short }}"
+          git push -u origin "$BRANCH_NAME"
+
+      - name: Create new Pull Request
+        if: steps.check.outputs.update_needed == 'true' && steps.existing-pr.outputs.pr_exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --title "Update source to ${{ steps.get-hash.outputs.latest_hash_short }}" \
+            --body "$(cat <<'EOF'
+          Update source reference to ${{ steps.get-hash.outputs.latest_hash_short }}
+
+          ## Updates:
+          - Source repository: `${{ env.SOURCE_REPO_URL }}`
+          - Previous commit: `${{ steps.current-hash.outputs.current_hash_short }}`
+          - New commit: `${{ steps.get-hash.outputs.latest_hash_short }}`
+
+          Changes: ${{ env.SOURCE_REPO_URL }}/compare/${{ steps.current-hash.outputs.current_hash }}...${{ steps.get-hash.outputs.latest_hash }}
+          EOF
+          )" \
+            --label "${{ env.PR_LABEL }}" \
+            --assignee "${{ env.PR_ASSIGNEE }}"
