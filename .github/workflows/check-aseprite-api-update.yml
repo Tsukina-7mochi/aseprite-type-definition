@@ -89,17 +89,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          REPO_URL_CLEAN="${{ env.SOURCE_REPO_URL%.git }}"
           gh pr edit ${{ steps.existing-pr.outputs.pr_number }} \
             --title "Update source to ${{ steps.get-hash.outputs.latest_hash_short }}" \
-            --body "$(cat <<'EOF'
+            --body "$(cat <<EOF
           Update source reference to ${{ steps.get-hash.outputs.latest_hash_short }}
 
           ## Updates:
-          - Source repository: `${{ env.SOURCE_REPO_URL }}`
-          - Previous commit: `${{ steps.current-hash.outputs.current_hash_short }}`
-          - New commit: `${{ steps.get-hash.outputs.latest_hash_short }}`
+          - Source repository: \`${{ env.SOURCE_REPO_URL }}\`
+          - Previous commit: \`${{ steps.current-hash.outputs.current_hash_short }}\`
+          - New commit: \`${{ steps.get-hash.outputs.latest_hash_short }}\`
 
-          Changes: ${{ env.SOURCE_REPO_URL }}/compare/${{ steps.current-hash.outputs.current_hash }}...${{ steps.get-hash.outputs.latest_hash }}
+          Changes: \${REPO_URL_CLEAN}/compare/${{ steps.current-hash.outputs.current_hash }}...${{ steps.get-hash.outputs.latest_hash }}
           EOF
           )" \
             --add-assignee "${{ env.PR_ASSIGNEE }}"
@@ -120,17 +121,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          REPO_URL_CLEAN="${{ env.SOURCE_REPO_URL%.git }}"
           gh pr create \
             --title "Update source to ${{ steps.get-hash.outputs.latest_hash_short }}" \
-            --body "$(cat <<'EOF'
+            --body "$(cat <<EOF
           Update source reference to ${{ steps.get-hash.outputs.latest_hash_short }}
 
           ## Updates:
-          - Source repository: `${{ env.SOURCE_REPO_URL }}`
-          - Previous commit: `${{ steps.current-hash.outputs.current_hash_short }}`
-          - New commit: `${{ steps.get-hash.outputs.latest_hash_short }}`
+          - Source repository: \`${{ env.SOURCE_REPO_URL }}\`
+          - Previous commit: \`${{ steps.current-hash.outputs.current_hash_short }}\`
+          - New commit: \`${{ steps.get-hash.outputs.latest_hash_short }}\`
 
-          Changes: ${{ env.SOURCE_REPO_URL }}/compare/${{ steps.current-hash.outputs.current_hash }}...${{ steps.get-hash.outputs.latest_hash }}
+          Changes: \${REPO_URL_CLEAN}/compare/${{ steps.current-hash.outputs.current_hash }}...${{ steps.get-hash.outputs.latest_hash }}
           EOF
           )" \
             --label "${{ env.PR_LABEL }}" \
