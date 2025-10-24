@@ -89,7 +89,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPO_URL_CLEAN="${{ env.SOURCE_REPO_URL%.git }}"
+          SOURCE_REPO_URL="${{ env.SOURCE_REPO_URL }}"
+          REPO_URL_CLEAN="${SOURCE_REPO_URL%.git}"
           gh pr edit ${{ steps.existing-pr.outputs.pr_number }} \
             --title "Update source to ${{ steps.get-hash.outputs.latest_hash_short }}" \
             --body "$(cat <<EOF
@@ -121,7 +122,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          REPO_URL_CLEAN="${{ env.SOURCE_REPO_URL%.git }}"
+          SOURCE_REPO_URL="${{ env.SOURCE_REPO_URL }}"
+          REPO_URL_CLEAN="${SOURCE_REPO_URL%.git}"
           gh pr create \
             --title "Update source to ${{ steps.get-hash.outputs.latest_hash_short }}" \
             --body "$(cat <<EOF
