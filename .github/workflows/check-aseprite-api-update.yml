@@ -33,7 +33,7 @@ jobs:
       - name: Read current commit hash
         id: current-hash
         run: |
-          CURRENT_HASH=$(cat ${{ env.COMMIT_HASH_FILE }} | tr -d '\n' | tr -d ' ')
+          CURRENT_HASH="$(cat definitions/aseprite.lua | grep 'based on' | awk '{print $4}')"
           CURRENT_HASH_SHORT=${CURRENT_HASH:0:7}
           echo "current_hash=$CURRENT_HASH" >> $GITHUB_OUTPUT
           echo "current_hash_short=$CURRENT_HASH_SHORT" >> $GITHUB_OUTPUT

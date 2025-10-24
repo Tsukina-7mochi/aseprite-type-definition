@@ -1,7 +1,7 @@
 ---@meta
 
 --Type definition of API Version 28
---based on @aseprite/api f3f89517191f09c54712bb39a64cffb0a43abab8
+--based on https://github.com/aseprite/api.git 7289b62da9b4a33732ce3a2907cd518890414b7f
 
 ---@type unknown
 local undefined
