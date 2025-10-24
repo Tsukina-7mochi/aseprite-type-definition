@@ -429,10 +429,9 @@ app = {
         ---```
         ---
         ---Returns `path1/path2` on macOS or Linux, and `path1\path2` on Windows.
-        ---@param path1 string
-        ---@param path2 string
+        ---@param ... string
         ---@return string
-        joinPath = function (path1, path2) end,
+        joinPath = function (...) end,
 
         ---Returns the path the Aseprite executable was launched from.
         ---@type string
@@ -1439,6 +1438,7 @@ local _dialog = {
     ---@return Dialog
     tab = function (self, init) end,
 
+    --- @alias EndtabsInit { id: string?, selected: string?, align: (Align | integer)?, onchange: function? }
     ---```lua
     ---local dlg = Dialog()
     ---dlg:endtabs{ id=string,
@@ -1458,7 +1458,7 @@ local _dialog = {
     ---         print("selected tab: " .. ev.tab)
     ---      end }
     ---    ```
-    ---@param options { id: string?, selected: string?, align: (Align | integer)?, onchange: function? }
+    ---@param options EndtabsInit
     ---@return Dialog
     endtabs = function (self, options) end,
 
@@ -1598,7 +1598,8 @@ local _editor = {
 ---
 ---With this property you can associate (or disassociate) a function to a specific event.
 ---@class Events
-Events = {
+local _events = {
+    --- @alias OnCallbackEvent { name: string, stopPropagation: fun(), params: table }
     ---```lua
     ---local listenerCode = events:on(eventName, function)
     ---```
@@ -1616,9 +1617,9 @@ Events = {
     ---  end)
     ---```
     ---@param eventName string the event name/code/identifier
-    ---@param func fun()
+    ---@param func fun(event?: OnCallbackEvent)
     ---@return integer listenerCode
-    on = function (eventName, func) end,
+    on = function (self, eventName, func) end,
 
     ---```lua
     ---events:off(function)
@@ -1634,7 +1635,7 @@ Events = {
     ---```
     ---@param listenerCode integer
     ---@overload fun(func: fun())
-    off = function (listenerCode) end,
+    off = function (self, listenerCode) end,
 }
 
 ---This is an auxiliary object that points to a given frame in the sprite and can be used to adjust information about that frame. If you modify the number of frames in the sprite, or the structure of the frames, a `Frame` object will still pointing to the same frame number.
@@ -2499,7 +2500,7 @@ local _plugin = {
     ---@type table<string, any>
     preferences = undefined,
 
-    ---@alias PluginInit { id: string, title: string, group: string, onclick: function?, onenabled: function? }
+    ---@alias CommandInit { id: string, title: string, group: string, onclick: function?, onenabled: function? }
     ---```lua
     ---function init(plugin)
     ---  plugin:newCommand{
@@ -2521,7 +2522,7 @@ local _plugin = {
     ---
     ---* `onclick`: Function to be called when the command is executed (clicked or an associated keyboard shortcut pressed).
     ---* `onenabled`: Optional function to know if the command should be available (enabled or disabled). It should return true if the command can be executed right now. If this function is not specified the command will be always available to be executed by the user.
-    ---@param init PluginInit
+    ---@param init CommandInit
     newCommand = function (self, init) end,
 
     ---@alias MenuGroupInit { id: string, title: string, group: string }
@@ -2542,6 +2543,7 @@ local _plugin = {
     ---@param init MenuGroupInit
     newMenuGroup = function (self, init) end,
 
+    --- @alias MenuSeparatorInit { group: string }
     ---```lua
     ---function init(plugin)
     ---  plugin:newMenuSeparator{
@@ -2551,8 +2553,8 @@ local _plugin = {
     ---```
     ---
     ---Creates a menu separator in the given menu group, useful to separate several `Plugin:newCommand`.
-    ---@param options { group: string }
-    ewMenuSeparator = function (self, options) end,
+    ---@param options MenuSeparatorInit
+    newMenuSeparator = function (self, options) end,
 }
 
 ---@class Point
@@ -3097,6 +3099,7 @@ local _sprite = {
     ---@param frame Frame
     ---@param image Image?
     ---@param position Point?
+    ---@return Cel
     newCel = function (self, layer, frame, image, position) end,
 
     ---Deletes the given cel. If the cel is from a transparent layer, the cel is completely deleted, but if the cel is from a background layer, the cel will be delete with the background color.
