@@ -3,7 +3,6 @@
 --Type definition of API Version 28
 --based on @aseprite/api f3f89517191f09c54712bb39a64cffb0a43abab8
 
-
 ---@type unknown
 local undefined
 
@@ -113,7 +112,7 @@ app = {
         ---@param blue integer
         ---@param alpha? integer default is 255 (i.e. 100% opaque)
         ---@return integer
-        rgba = function(red, green, blue, alpha) end,
+        rgba = function (red, green, blue, alpha) end,
 
         ---```lua
         ---local redComponent = app.pixelColor.rgbaR(rgbaPixelValue)
@@ -136,22 +135,22 @@ app = {
         ---```
         ---@param rgbaPixelValue integer
         ---@return integer
-        rgbaR = function(rgbaPixelValue) end,
+        rgbaR = function (rgbaPixelValue) end,
 
         ---Same as `rgbaR()` but with the Green component.
         ---@param rgbaPixelValue integer
         ---@return integer
-        rgbaG = function(rgbaPixelValue) end,
+        rgbaG = function (rgbaPixelValue) end,
 
         ---Same as `rgbaR()` but with the Blue component.
         ---@param rgbaPixelValue integer
         ---@return integer
-        rgbaB = function(rgbaPixelValue) end,
+        rgbaB = function (rgbaPixelValue) end,
 
         ---Same as `rgbaR()` but with the Alpha component.
         ---@param rgbaPixelValue integer
         ---@return integer
-        rgbaA = function(rgbaPixelValue) end,
+        rgbaA = function (rgbaPixelValue) end,
 
         ---```lua
         ---local grayPixelValue = app.pixelColor.graya(gray [, alpha])
@@ -170,7 +169,7 @@ app = {
         ---@param gray integer
         ---@param alpha? integer default is 255 (i.e. 100% opaque)
         ---@return integer
-        graya = function(gray, alpha) end,
+        graya = function (gray, alpha) end,
 
         ---```lua
         ---local grayValue = app.pixelColor.grayaV(grayPixelValue)
@@ -190,12 +189,12 @@ app = {
         ---```
         ---@param grayPixelValue integer 16-bit integer
         ---@return integer
-        grayaV = function(grayPixelValue) end,
+        grayaV = function (grayPixelValue) end,
 
         ---Same as `grayaV()` but with the Alpha component.
         ---@param grayPixelValue integer 16-bit integer
         ---@return integer
-        grayaA = function(grayPixelValue) end
+        grayaA = function (grayPixelValue) end,
     },
 
     ---Returns the Aseprite version number as a `Version` object (e.g. `Version("1.2.10-beta1")`).
@@ -254,7 +253,7 @@ app = {
     ---@param text string
     ---@return integer buttonClicked
     ---@overload fun(options: { title: string, text: string|string[], buttons: string | string[] }): integer
-    alert = function(text) end,
+    alert = function (text) end,
 
     ---```lua
     ---app.open(filename)
@@ -263,14 +262,14 @@ app = {
     ---Opens a new sprite loading it from the given filename. Returns an instance of the Sprite class or `nil` if something went wrong.
     ---@param filename string
     ---@return Sprite | nil
-    open = function(filename) end,
+    open = function (filename) end,
 
     ---```lua
     ---app.exit()
     ---```
     ---
     ---Closes the application. It's like clicking *File > Exit* menu option.
-    exit = function() end,
+    exit = function () end,
 
     ---```lua
     ---app.transaction(
@@ -306,7 +305,7 @@ app = {
     ---```
     ---@param func fun(): any a function called inside the transaction
     ---@overload fun(label: string, func: fun(): any)
-    transaction = function(func) end,
+    transaction = function (func) end,
 
     ---```lua
     ---app.command.CommandName()
@@ -351,7 +350,7 @@ app = {
         ---Returns the path/directory part (as a string) of the given filename `fn`.
         ---@param fn string filename
         ---@return string
-        filePath = function(fn) end,
+        filePath = function (fn) end,
 
         ---Returns the file name (including the extension part) of the given filename
         ---
@@ -362,7 +361,7 @@ app = {
         ---Returns the file name (including the extension part) of the given filename `fn`.
         ---@param fn string filename
         ---@return string
-        fileName = function(fn) end,
+        fileName = function (fn) end,
 
         ---```lua
         ---local extension = app.fs.fileExtension(fn)
@@ -377,7 +376,7 @@ app = {
         ---Prints `png`. Returns the file extension (without including the `.`) of the given filename
         --- @param fn string filename
         ---@return string
-        fileExtension = function(fn) end,
+        fileExtension = function (fn) end,
 
         ---```lua
         ---local title = app.fs.fileTitle(fn)
@@ -392,7 +391,7 @@ app = {
         ---Prints `file`.
         ---@param fn string filename
         ---@return string
-        fileTitle = function(fn) end,
+        fileTitle = function (fn) end,
 
         ---```lua
         ---local title = app.fs.filePathAndTitle(fn)
@@ -408,7 +407,7 @@ app = {
         ---Prints `path/file`.
         ---@param fn string filename
         ---@return string
-        filePathAndTitle = function(fn) end,
+        filePathAndTitle = function (fn) end,
 
         ---Returns the file path converted to a canonical form for the current platform.
         ---
@@ -421,7 +420,7 @@ app = {
         ---Will print as `/home/user/path` on macOS or Linux, and `C:\home\user\path` on Windows.
         ---@param path string
         ---@return string
-        normalizePath = function(path) end,
+        normalizePath = function (path) end,
 
         ---Can accept any number of string arguments to join together with the path separator for the current platform.
         ---
@@ -433,7 +432,7 @@ app = {
         ---@param path1 string
         ---@param path2 string
         ---@return string
-        joinPath = function(path1, path2) end,
+        joinPath = function (path1, path2) end,
 
         ---Returns the path the Aseprite executable was launched from.
         ---@type string
@@ -468,7 +467,7 @@ app = {
         ---Returns 'true' if the given filename `fn` is a file.
         ---@param fn string filename
         ---@return boolean
-        isFile = function(fn) end,
+        isFile = function (fn) end,
 
         ---```lua
         ---local exists = app.fs.isDirectory(fn)
@@ -477,7 +476,7 @@ app = {
         ---Returns 'true' if the given filename `fn` is a directory.
         ---@param fn string filename
         ---@return boolean
-        isDirectory = function(fn) end,
+        isDirectory = function (fn) end,
 
         ---```lua
         ---local size = app.fs.fileSize(fn)
@@ -486,7 +485,7 @@ app = {
         ---Returns the file size of the given filename `fn`.
         ---@param fn string filename
         ---@return integer
-        fileSize = function(fn) end,
+        fileSize = function (fn) end,
 
         ---```lua
         ---local table = app.fs.listFiles(path)
@@ -503,7 +502,7 @@ app = {
         ---```
         ---@param path string
         ---@return string[]
-        listFiles = function(path) end,
+        listFiles = function (path) end,
 
         ---```lua
         ---app.fs.makeDirectory(path)
@@ -514,7 +513,7 @@ app = {
         ---Returns `true` if the directory was created.
         ---@param path string
         ---@return boolean
-        makeDirectory = function(path) end,
+        makeDirectory = function (path) end,
 
         ---```lua
         ---local result = app.fs.makeAllDirectories(path)
@@ -525,7 +524,7 @@ app = {
         ---Returns `true` if all the directories were created.
         ---@param path string
         ---@return boolean
-        makeAllDirectories = function(path) end,
+        makeAllDirectories = function (path) end,
 
         ---```lua
         ---app.fs.removeDirectory(path)
@@ -536,7 +535,7 @@ app = {
         ---Returns `true` if the directory was removed (or is already removed).
         ---@param path string
         ---@return boolean
-        removeDirectory = function(path) end
+        removeDirectory = function (path) end,
     },
 
     ---Access information about the current theme.
@@ -547,13 +546,13 @@ app = {
     uiScale = undefined,
 
     ---This function is available just in case you see that your script updates the sprite but the screen is not showing the updated state of the sprite. It should not be needed, but it's here just in case that something is not working right on the Aseprite side.
-    refresh = function() end,
+    refresh = function () end,
 
     ---Undoes the latest operation in the active sprite. It's like calling `app.command.Undo()` (the *Edit > Undo*  menu option).
-    undo = function() end,
+    undo = function () end,
 
     ---Redoes the latest undone operation in the active sprite. It's like calling `app.command.Redo()` (the *Edit > Redo*  menu option).
-    redo = function() end,
+    redo = function () end,
 
     ---Simulates an user stroke in the canvas using the given tool.
     ---
@@ -567,7 +566,7 @@ app = {
     ---  * `layer`: The [layer](layer.md#layer) where we want to use the tool/draw with the tool (by default [app.layer](app.md#applayer))
     ---  * `frame`: The [frame](frame.md#frame) where to draw (by default [app.frame](app.md#appframe))
     ---@param options { tool: string, color: Color, bgColor: Color, brush: Brush, points: Point[], cel: Cel, layer: Layer, frame: Frame, ink: Ink, button: MouseButton, opacity: integer, contiguous: boolean, tolerance: integer, freehandAlgorithm: 0 | 1, selection: SelectionMode?, tilemapMode: unknown?, tilesetMode: unknown? }
-    usetool = function(options) end,
+    usetool = function (options) end,
 
     ---Returns the `Events` object to associate functions that can act like listeners of specific `app` events. E.g.
     ---```lua
@@ -683,7 +682,6 @@ app = {
     activeBrush = undefined,
 }
 
-
 ---Since **Aseprite v1.3-rc5** you have this `json` global namespace. It provides a couple of functions to decode JSON objects from strings to Lua objects/tables and viceversa.
 json = {
     ---Parses the given `jsonText` and returns a Lua table-like object
@@ -703,7 +701,7 @@ json = {
     ---```
     ---@param jsonText string
     ---@return any
-    decode = function(jsonText) end,
+    decode = function (jsonText) end,
 
     ---Converts the given Lua-table into a JSON text.
     ---
@@ -715,9 +713,8 @@ json = {
     ---```
     ---@param luaTable any
     ---@return string
-    encode = function(luaTable) end,
+    encode = function (luaTable) end,
 }
-
 
 ---Set of flags/bits specifying horizontal and vertical alignment of an UI element. You can combine one or several of these values depending on the case/what you are aligning. The specific integer values of each element in this enum might vary in the future.
 ---
@@ -745,7 +742,6 @@ Align = {
     BOTTOM = undefined,
 }
 
-
 ---Direction of animation playback.
 ---@class AniDir
 AniDir = {
@@ -754,7 +750,6 @@ AniDir = {
     PING_PONG = undefined --[[@as AniDir]],
     PING_PONG_REVERSE = undefined --[[@as AniDir]],
 }
-
 
 ---Blend modes defines how the colors should be mixed when two images overlaps. Used in `Image:drawImage()` as input argument.
 ---@class BlendMode: integer
@@ -781,14 +776,12 @@ BlendMode = {
     DIVIDE = undefined --[[@as BlendMode]],
 }
 
-
 ---@class BrushPattern
 BrushPattern = {
     NONE = undefined --[[@as BrushPattern]],
     ORIGIN = undefined --[[@as BrushPattern]],
     TARGET = undefined --[[@as BrushPattern]],
 }
-
 
 ---@class BrushType
 BrushType = {
@@ -797,7 +790,6 @@ BrushType = {
     LINE = undefined --[[@as BrushType]],
     IMAGE = undefined --[[@as BrushType]],
 }
-
 
 ---The color mode of an sprite or image specifies the internal structure of each pixel. You can see the [Color Mode section in the Aseprite docs](https://www.aseprite.org/docs/color-mode/) for an introduction about each color mode.
 ---@class ColorMode: integer
@@ -823,9 +815,7 @@ ColorMode = {
     ---Special color mode used for tilemaps, where each pixel is tile reference in a tileset.
     ---@type ColorMode
     TILEMAP = undefined,
-
 }
-
 
 ---@class FilterChannels
 ---@operator bor(FilterChannels): FilterChannels
@@ -848,9 +838,7 @@ FilterChannels = {
     ---Same as `FilterChannels.GRAY | FilterChannels.ALPHA`.
     ---@type FilterChannels
     GRAYA = undefined,
-
 }
-
 
 ---More info about each ink type behavior at [https://www.aseprite.org/docs/ink/](https://www.aseprite.org/docs/ink/).
 ---@class Ink
@@ -876,7 +864,6 @@ Ink = {
     SHADING = undefined,
 }
 
-
 ---@class MouseButton
 MouseButton = {
     NONE = undefined --[[@as MouseButton]],
@@ -884,9 +871,8 @@ MouseButton = {
     RIGHT = undefined --[[@as MouseButton]],
     MIDDLE = undefined --[[@as MouseButton]],
     X1 = undefined --[[@as MouseButton]],
-    X2 = undefined --[[@as MouseButton]]
+    X2 = undefined --[[@as MouseButton]],
 }
-
 
 ---Mouse cursor that can be set in a [canvas widget](dialog.md#dialogcanvas) using:
 ---
@@ -915,7 +901,6 @@ MouseCursor = {
     NW_RESIZE = undefined --[[@as MouseCursor]],
 }
 
-
 ---Type of range selected in the timeline.
 ---@class RangeType
 RangeType = {
@@ -936,7 +921,6 @@ RangeType = {
     CELS = undefined,
 }
 
-
 ---Selection mode
 ---@class SelectionMode
 SelectionMode = {
@@ -946,14 +930,12 @@ SelectionMode = {
     INTERSECT = undefined --[[@as SelectionMode]],
 }
 
-
 ---Data format used to export JSON files in `app.command.ExportSpriteSheet`.
 ---@class SpriteSheetDataFormat
 SpriteSheetDataFormat = {
     JSON_HASH = undefined --[[@as SpriteSheetDataFormat]],
     JSON_ARRAY = undefined --[[@as SpriteSheetDataFormat]],
 }
-
 
 ---Type of sprite sheet used in `app.command.ExportSpriteSheet`
 ---@class SpriteSheetType
@@ -962,9 +944,8 @@ SpriteSheetType = {
     VERTICAL = undefined --[[@as SpriteSheetType]],
     ROWS = undefined --[[@as SpriteSheetType]],
     COLUMNS = undefined --[[@as SpriteSheetType]],
-    PACKED = undefined --[[@as SpriteSheetType]]
+    PACKED = undefined --[[@as SpriteSheetType]],
 }
-
 
 ---@class WebSocketMessageType
 WebSocketMessageType = {
@@ -998,7 +979,6 @@ WebSocketMessageType = {
     FRAGMENT = undefined,
 }
 
-
 ---Identifies a brush to paint with `app.useTool()` function.
 ---@class Brush
 ---@field type BrushType
@@ -1016,7 +996,7 @@ local _brush = undefined
 ---@overload fun(size: Size): Brush
 ---@overload fun(image: Image): Brush
 ---@overload fun(init: BrushInit): Brush
-function Brush() end
+function Brush () end
 
 ---A cel is an image in a specific xy-coordinate, and a specific layer/frame combination.
 ---@class Cel
@@ -1087,7 +1067,7 @@ local _color = undefined
 ---@overload fun(options: { hue: number, saturation: number, lightness: number, alpha: integer }): Color
 ---@overload fun(options: { gray: integer, a: integer }): Color
 ---@overload fun(options: { index: integer }): Color
-function Color(index) end
+function Color (index) end
 
 ---Represents the [color space/profile](https://www.aseprite.org/docs/color-profile/) of a sprite, image, or image spec.
 ---@class ColorSpace
@@ -1105,7 +1085,7 @@ local _colorSpace = undefined
 ---@return ColorSpace
 ---@overload fun(options: { sRGB: boolean }): ColorSpace
 ---@overload fun(options: { fromFile: string }): ColorSpace
-function ColorSpace() end
+function ColorSpace () end
 
 ---The dialog class can be used to show input controls/widgets in the screen to get some data from the user.
 ---
@@ -1194,7 +1174,7 @@ local _dialog = {
     ---* `onclick`: Function to be called when the button is pressed.
     ---@param init ButtonInit
     ---@return Dialog
-    button = function(self, init) end,
+    button = function (self, init) end,
 
     ---@alias CheckInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, text: string?, selected: boolean?, onclick: function? }
     ---```lua
@@ -1210,7 +1190,7 @@ local _dialog = {
     ---}
     ---@param init CheckInit
     ---@return Dialog
-    check = function(self, init) end,
+    check = function (self, init) end,
 
     ---```lua
     ---local dlg = Dialog()
@@ -1222,7 +1202,7 @@ local _dialog = {
     ---```
     ---
     ---Closes the dialog from a `onclick` button event. By default buttons without an `onclick` event handler will close the dialog, but if you specify a `onclick` function, you have to call this function to close the dialog.
-    close = function(self) end,
+    close = function (self) end,
 
     ---@alias ColorInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, color: Color?, onchange: function? }
     ---```lua
@@ -1236,7 +1216,7 @@ local _dialog = {
     ---Creates a button to select a color.
     ---@param init ColorInit
     ---@return Dialog
-    color = function(self, init) end,
+    color = function (self, init) end,
 
     ---@alias ComboboxInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, option: string?, options: string[], onchange: function? }
     ---```lua
@@ -1254,7 +1234,7 @@ local _dialog = {
     ---* `option`: Indicates the default selected option in the combobox (one of the `options`).
     ---@param init ComboboxInit
     ---@return Dialog
-    combobox = function(self, init) end,
+    combobox = function (self, init) end,
 
     ---@alias EntryInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, text: string?, focus: string?, onchange: function? }
     ---```lua
@@ -1269,7 +1249,7 @@ local _dialog = {
     ---Creates a text entry.
     ---@param init EntryInit
     ---@return Dialog
-    entry = function(self, init) end,
+    entry = function (self, init) end,
 
     ---@alias LabelInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, text: string? }
     ---```lua
@@ -1286,7 +1266,7 @@ local _dialog = {
     ---Creates a static label.
     ---@param init LabelInit
     ---@return Dialog
-    label = function(dialog, init) end,
+    label = function (dialog, init) end,
 
     ---@alias ModifyOptions { id: string, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, [string]: string | number | boolean | Color | Color[] }
     ---```lua
@@ -1306,7 +1286,7 @@ local _dialog = {
     ---
     ---Using the `dialog:modify` with a parameter `title` changes the dialog title.
     ---@param options ModifyOptions
-    modify = function(self, options) end,
+    modify = function (self, options) end,
 
     ---```lua
     ---local dlg = Dialog()
@@ -1319,7 +1299,7 @@ local _dialog = {
     ---Using the `newrow{ always=true }` is a way to avoid joining widgets of the same type (it's like calling `newrow()` after each new widget is added).
     ---@return Dialog
     ---@overload fun(self: Dialog, options: { always: boolean? })
-    newrow = function(self) end,
+    newrow = function (self) end,
 
     ---@alias NumberInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, text: string?, decimals: string?, onchange: function? }
     ---```lua
@@ -1334,7 +1314,7 @@ local _dialog = {
     ---Creates an entry field to input a number.
     ---@param init NumberInit
     ---@return Dialog
-    number = function(self, init) end,
+    number = function (self, init) end,
 
     ---@alias RadioInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, text: string?, selected: boolean?, onclick: function? }
     ---```lua
@@ -1349,7 +1329,7 @@ local _dialog = {
     ---Creates a radio button. Arguments are the same as in [Dialog:button](#dialogbutton).
     ---@param init RadioInit
     ---@return Dialog
-    radio = function(self, init) end,
+    radio = function (self, init) end,
 
     ---@alias SeparatorInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, text: string? }
     ---```lua
@@ -1361,7 +1341,7 @@ local _dialog = {
     ---Creates a separator.
     ---@param init SeparatorInit,
     ---@return Dialog
-    separator = function(dialog, init) end,
+    separator = function (dialog, init) end,
 
     ---@alias ShadesInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, mode: "pick" | "sort", colors: Color[], onclick: function? }
     ---```lua
@@ -1392,7 +1372,7 @@ local _dialog = {
     ---```
     ---@param init ShadesInit
     ---@return Dialog
-    shades = function(self, init) end,
+    shades = function (self, init) end,
 
     ---```lua
     ---local dlg = Dialog()
@@ -1413,7 +1393,7 @@ local _dialog = {
     ---Setting `{ autoscrollbars=true }` will add scrollbars automatically only if they are needed. This means that if your dialog contains enough widgets to make it go out of the window/screen (depending if you are using single window UI or multiple windows UI) then scrollbars will be shown into your dialog when its content doesn't fit its bounds.
     ---@return Dialog
     ---@overload fun(self: Dialog, options: { wait: boolean?, bounds: Rectangle?, autoscrollbars: boolean? })
-    show = function(self) end,
+    show = function (self) end,
 
     ---@alias SliderInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, min: integer, max: integer, value: integer, onchange: function?, onrelease: function? }
     ---```lua
@@ -1430,7 +1410,7 @@ local _dialog = {
     ---Creates a slider in the dialog.
     ---@param init SliderInit
     ---@return Dialog
-    slider = function(self, init) end,
+    slider = function (self, init) end,
 
     ---@alias TabInit { id: string?, focus: boolean?, enabled: boolean?, visible: boolean?, text: string?, onclick: function? }
     ---```lua
@@ -1457,7 +1437,7 @@ local _dialog = {
     ---These can be specified at `Dialog:endtabs`.
     ---@param init TabInit
     ---@return Dialog
-    tab = function(self, init) end,
+    tab = function (self, init) end,
 
     ---```lua
     ---local dlg = Dialog()
@@ -1480,7 +1460,7 @@ local _dialog = {
     ---    ```
     ---@param options { id: string?, selected: string?, align: (Align | integer)?, onchange: function? }
     ---@return Dialog
-    endtabs = function(self, options) end,
+    endtabs = function (self, options) end,
 
     ---@alias FileInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, title: string?, open: boolean?, save: boolean?, filename: (string | string[])?, filetypes: string[]?, onchange: function? }
     ---```lua
@@ -1512,7 +1492,7 @@ local _dialog = {
     ---* `onchange`: Function to be called when the filename is changed.
     ---@param init FileInit
     ---@return Dialog
-    file = function(self, init) end,
+    file = function (self, init) end,
 
     ---@alias CanvasInit { id: string?, label: string?, focus: boolean?, enabled: boolean?, visible: boolean?, hexpand: boolean?, vexpand: boolean?, width: integer, height: integer, autoscaling: boolean?, onpaint: function, onkeydown: function, onkeyup: function, onmousemove: fun(ev: MouseEvent), onmousedown: fun(ev: MouseEvent), onmouseup: fun(ev: MouseEvent), ondblclick: fun(ev: MouseEvent), onwheel: fun(ev: MouseEvent), ontouchmagnify: function }
     ---```lua
@@ -1543,10 +1523,10 @@ local _dialog = {
     ---The `autoscaling` property allows the script developer to draw on the GraphicsContext received in the canvas's onpaint event without worrying about the current UI scale setting. For instance, you can draw a 20[px]x30[px] rectangle in the canvas's GraphicsContext and it will be displayed the same at any UI scale. This property is enabled by default if omitted, so if you don't need it you must explicitly set it to false.
     ---@param init CanvasInit
     ---@return Dialog
-    canvas = function(self, init) end,
+    canvas = function (self, init) end,
 
     ---Will call `onpaint` event of all canvases and update the dialog pixels on the screen.
-    repaint = function(self) end,
+    repaint = function (self) end,
 }
 
 ---@alias DialogInit { title: string?, notitlebar: boolean?, parent: Dialog?, onclose: function? }
@@ -1569,7 +1549,7 @@ local _dialog = {
 ---@return Dialog | nil
 ---@overload fun(title: string): Dialog | nil
 ---@overload fun(init: DialogInit): Dialog | nil
-function Dialog() end
+function Dialog () end
 
 ---References a sprite editor. At the moment we can access only the active editor using `app.editor`.
 ---@class Editor
@@ -1604,14 +1584,14 @@ local _editor = {
     ---* `onchange`: Happens when the user drags the mouse (press/move mouse/release a mouse button) on the canvas
     ---* `oncancel`: Happens when the user cancels the action (e.g. press the <kbd>Escape</kbd> key)
     ---@param options AskPointOptions
-    askPoint = function(self, options) end,
+    askPoint = function (self, options) end,
 
     ---```lua
     ---app.editor:cancel()
     ---```
     ---
     ---Cancels the `editor:askPoint()` action.
-    cancel = function(self) end,
+    cancel = function (self) end,
 }
 
 ---A collection of listeners for specific events. Available for `App.events` and `Sprite.events`.
@@ -1638,7 +1618,7 @@ Events = {
     ---@param eventName string the event name/code/identifier
     ---@param func fun()
     ---@return integer listenerCode
-    on = function(eventName, func) end,
+    on = function (eventName, func) end,
 
     ---```lua
     ---events:off(function)
@@ -1654,9 +1634,8 @@ Events = {
     ---```
     ---@param listenerCode integer
     ---@overload fun(func: fun())
-    off = function(listenerCode) end,
+    off = function (listenerCode) end,
 }
-
 
 ---This is an auxiliary object that points to a given frame in the sprite and can be used to adjust information about that frame. If you modify the number of frames in the sprite, or the structure of the frames, a `Frame` object will still pointing to the same frame number.
 ---@class Frame
@@ -1681,7 +1660,6 @@ local _frame = {
     ---@type Frame
     next = undefined,
 }
-
 
 ---The *GraphicsContext* object provides methods for drawing images, text and shapes on the canvas.
 ---
@@ -1761,10 +1739,10 @@ local _graphicsContext = {
     ---* blendMode
     ---* stroke width
     ---* clipping region
-    save = function(self) end,
+    save = function (self) end,
 
     ---Restores the last saved canvas state.
-    restore = function(self) end,
+    restore = function (self) end,
 
     ---Sets the current path as a clipping area for following drawing operations.
     ---
@@ -1797,26 +1775,26 @@ local _graphicsContext = {
     ---gc:roundedRect(Rectangle(20, 20, 60, 60), 30)
     ---gc:fill()
     ---```
-    clip = function(self) end,
+    clip = function (self) end,
 
     ---Paints the edges of the given rectangle with the current color and current width.
     ---@param rectangle Rectangle
-    strokeRect = function(self, rectangle) end,
+    strokeRect = function (self, rectangle) end,
 
     ---Fills the given rectangle with the current color.
     ---@param rectangle Rectangle
-    fillRect = function(self, rectangle) end,
+    fillRect = function (self, rectangle) end,
 
     ---Draws on the canvas the given text string, at a position specified by the *xy*-coordinates.
     ---@param text string
     ---@param x number
     ---@param y number
-    fillText = function(self, text, x, y) end,
+    fillText = function (self, text, x, y) end,
 
     ---Returns the `Size` of the given text using the current font.
     ---@param text string
     ---@return Size
-    measureText = function(self, text) end,
+    measureText = function (self, text) end,
 
     ---```lua
     ---gc:drawImage(image, x, y)
@@ -1834,7 +1812,7 @@ local _graphicsContext = {
     ---@param y number
     ---@overload fun(self, image: Image, srcRect: Rectangle, dstRect: Rectangle)
     ---@overload fun(self, image: Image, srcX: number, srcY: number, srcW: number, srcH: number, dstX: number, dstY: number, dstW: number, dstH: number)
-    drawImage = function(self, image, x, y) end,
+    drawImage = function (self, image, x, y) end,
 
     ---```lua
     ---gc:drawThemeImage(partId, point)
@@ -1847,7 +1825,7 @@ local _graphicsContext = {
     ---@param partId string
     ---@param point Point
     ---@overload fun(self, partId: string, x: number, y: number)
-    drawThemeImage = function(self, partId, point) end,
+    drawThemeImage = function (self, partId, point) end,
 
     ---```lua
     ---gc:drawThemeRect(partId, rectangle)
@@ -1860,25 +1838,25 @@ local _graphicsContext = {
     ---@param partId string
     ---@param rectangle Rectangle
     ---@overload fun(self, partId: string, x: number, w: number, w: number, h: number)
-    drawThemeRect = function(self, partId, rectangle) end,
+    drawThemeRect = function (self, partId, rectangle) end,
 
     ---Starts a new path, emptying the list of tracked sub-paths. This is the first method to call when drawing paths.
-    beginPath = function(self) end,
+    beginPath = function (self) end,
 
     ---Closes the current sub-path by connecting the current point with the first point of the current sub-path.
-    closePath = function(self) end,
+    closePath = function (self) end,
 
     ---Starts a new sub-path at the specified *xy*-coordinates. This is the second method to call (after `GraphicsContext:beginPath()`) when drawing paths.
     ---@param x number
     ---@param y number
-    moveTo = function(self, x, y) end,
+    moveTo = function (self, x, y) end,
 
     ---Adds a line to the current sub-path, from the last point to the specified *xy*-coordinates.
     ---
     ---**Note:** This method doesn't draw on the canvas, to draw the path onto the canvas call `GraphicsContext:stroke()` or `GraphicsContext:fill()`.
     ---@param x number
     ---@param y number
-    lineTo = function(self, x, y) end,
+    lineTo = function (self, x, y) end,
 
     ---Adds a cubic [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) to the current sub-path, from the last point to the specified *xy*-coordinates, with two control points (specified by *cp1x/cp1y* and *cp2x/cp2y* coordinates).
     ---
@@ -1889,19 +1867,19 @@ local _graphicsContext = {
     ---@param cp2y number
     ---@param x number
     ---@param y number
-    cubicTo = function(self, cp1x, cp1y, cp2x, cp2y, x, y) end,
+    cubicTo = function (self, cp1x, cp1y, cp2x, cp2y, x, y) end,
 
     ---Adds an oval enclosed by the given `Rectangle` to the current sub-path.
     ---
     ---**Note:** This method doesn't draw on the canvas, to draw the path onto the canvas call `GraphicsContext:stroke()` or `GraphicsContext:fill()`.
     ---@param rectangle Rectangle
-    oval = function(self, rectangle) end,
+    oval = function (self, rectangle) end,
 
     ---Adds a given [Rectangle](rectangle.md) to the current sub-path.
     ---
     ---**Note:** This method doesn't draw on the canvas, to draw the path onto the canvas call `GraphicsContext:stroke()` or `GraphicsContext:fill()`.
     ---@param rectangle Rectangle
-    rect = function(self, rectangle) end,
+    rect = function (self, rectangle) end,
 
     ---```lua
     ---gc:roundedRect(rectangle, r)
@@ -1918,13 +1896,13 @@ local _graphicsContext = {
     ---@param rectangle Rectangle
     ---@param r number
     ---@overload fun(self, rectangle: Rectangle, rx: number, ry: number)
-    roundedRect = function(self, rectangle, r) end,
+    roundedRect = function (self, rectangle, r) end,
 
     ---Paints the edges of the current path with the current color and current width.
-    stroke = function(self) end,
+    stroke = function (self) end,
 
     ---Fills the current path with the current color.
-    fill = function(self) end,
+    fill = function (self) end,
 }
 
 ---An image object. Each cel has one image (all linked cels share the same image).
@@ -1985,12 +1963,12 @@ local _image = {
     ---
     ---The new image is unrelated to the sprite, but it can be used to update the image in a transaction. E.g. You clone an image, modify the pixels from the copy, and then you patch the image.
     ---@return Image
-    clone = function(self) end,
+    clone = function (self) end,
 
     ---Clears the image pixels in a given bounds with a the given color. The entire image is erased by default if no bounds present. `image.spec.transparentColor` if no color specified.
     ---@override fun(self, color: Color)
     ---@override fun(self, bounds: Rectangle, color: Color)
-    clear = function(self) end,
+    clear = function (self) end,
 
     ---Sets the pixel in the *xy*-coordinate to the given integer pixel value. The *xy*-coordinate is relative to the image, so pixel (0, 0) is the first pixel at the top-left coorner in the image, not in the sprite canvas.
     ---
@@ -1998,7 +1976,7 @@ local _image = {
     ---@param x integer
     ---@param y integer
     ---@param color integer
-    drawPixel = function(self, x, y, color) end,
+    drawPixel = function (self, x, y, color) end,
 
     ---Returns a integer pixel value for the given *xy*-coordinate related to the "Image" itself. The returned value will depend on the color mode of the image.
     ---
@@ -2006,7 +1984,7 @@ local _image = {
     ---@param x integer
     ---@param y integer
     ---@return integer
-    getPixel = function(self, x, y) end,
+    getPixel = function (self, x, y) end,
 
     ---```lua
     ---destinationImage:drawImage(sourceImage [, position, opacity, blendMode] )
@@ -2025,7 +2003,7 @@ local _image = {
     ---@overload fun(self, sourceImage: Image, opacity: integer)
     ---@overload fun(self, sourceImage: Image, opacity: integer, blendMode: BlendMode)
     ---@overload fun(self, sourceImage: Image, blendMode: BlendMode)
-    drawImage = function(self, sourceImage) end,
+    drawImage = function (self, sourceImage) end,
 
     ---```lua
     ---destinationImage:drawSprite(sourceSprite, frameNumber, [, position ] )
@@ -2037,7 +2015,7 @@ local _image = {
     ---@param sourceSprite Sprite
     ---@param frameNumber integer
     ---@param position? Point
-    drawSprite = function(self, sourceSprite, frameNumber, position) end,
+    drawSprite = function (self, sourceSprite, frameNumber, position) end,
 
     ---```lua
     ---if imageA:isEqual(imageB) then
@@ -2048,16 +2026,16 @@ local _image = {
     ---Returns true if both images looks the same (spec is equal and all pixels are the same).
     ---@param anotherImage Image
     ---@return boolean
-    isEqual = function(self, anotherImage) end,
+    isEqual = function (self, anotherImage) end,
 
     ---Returns true if all pixels in the image are equal to the transparent color.
     ---@return boolean
-    isEmpty = function(self) end,
+    isEmpty = function (self) end,
 
     ---Returns true if all pixels in the image are equal to the given `color` (which can be a pixel color or a `Color`).
     ---@param color Color | integer
     ---@return boolean
-    isPlain = function(self, color) end,
+    isPlain = function (self, color) end,
 
     ---@class Pixel
     ---@field x integer
@@ -2080,27 +2058,27 @@ local _image = {
     ---```
     ---@param rectangle? Rectangle
     ---@return fun(): Pixel
-    pixels = function(self, rectangle) end,
+    pixels = function (self, rectangle) end,
 
     ---Same as `Image:drawPixel()`.
     ---@deprecated
     ---@param x integer
     ---@param y integer
     ---@param color integer
-    putPixel = function(self, x, y, color) end,
+    putPixel = function (self, x, y, color) end,
 
     ---Now it's `Image:drawImage()`. This function is deprecated and was renamed to avoid confusion with the behavior `cel.image`.
     ---@deprecated
     ---@param image Image
     ---@param position? Point
-    putImage = function(self, image, position) end,
+    putImage = function (self, image, position) end,
 
     ---Now it's `Image:drawSprite()` to match `Image:drawImage()` name.
     ---@deprecated
     ---@param sprite Sprite
     ---@param frameNumber integer
     ---@param position Point
-    putSprite = function(self, sprite, frameNumber, position) end,
+    putSprite = function (self, sprite, frameNumber, position) end,
 
     ---```lua
     ---image:saveAs(filename)
@@ -2113,7 +2091,7 @@ local _image = {
     ---To save an indexed image we need to specify a `palette` parameter (a `Palette` object).  If we don't specify a palette parameter, in case that the image is related to a `Cel`, we'll use the palette of the Cel's `Sprite`.
     ---@param filename string
     ---@overload fun(self, options: { filename: string, palette: Palette? })
-    saveAs = function(self, filename) end,
+    saveAs = function (self, filename) end,
 
     ---```lua
     ---image:resize(width, height)
@@ -2128,7 +2106,7 @@ local _image = {
     ---@param height integer
     ---@overload fun(self, options: { width: integer, height: integer, method: ("bilinear" | "rotsprite")?, pivot: Point })
     ---@overload fun(self, options: { size: Size, method: ("bilinear" | "rotsprite")?, pivot: Point })
-    resize = function(self, width, height) end,
+    resize = function (self, width, height) end,
 
     ---```lua
     ---local rectangle = image:shrinkBounds()
@@ -2137,7 +2115,7 @@ local _image = {
     ---
     ---Returns the shrunken bounds (a `Rectangle`) of the image removing all the empty space of borders using the mask color or the given reference `Color` in `refColor`. }
     ---@param refColor? Color
-    shrinkBounds = function(self, refColor) end,
+    shrinkBounds = function (self, refColor) end,
 }
 
 ---```lua
@@ -2166,7 +2144,7 @@ local _image = {
 ---@overload fun(sprite: Sprite): Image
 ---@overload fun(otherImage: Image, rectangle?: Rectangle): Image
 ---@overload fun(option: { fromFile: string }): Image
-function Image(width, height, colorMode) end
+function Image (width, height, colorMode) end
 
 ---It's a simple object that contains some specifications to create new `Sprites` or `Images`, or to get the information (specs) of a `Sprite` or `Image`, like the canvas size (width/height), color mode, and color space. Often abbreviated as 'spec' in the API.
 ---@class ImageSpec
@@ -2208,7 +2186,7 @@ local _imageSpec = {
 ---@return ImageSpec
 ---@overload fun(otherImageSpec: ImageSpec): ImageSpec
 ---@overload fun(options: { width: integer, height: integer, colorMode: ColorMode, transparentColor: number })
-function ImageSpec() end
+function ImageSpec () end
 
 ---This object is received as first parameter in the function associated to `onkeydown` or `onkeyup` events of a canvas widget.
 ---@class KeyEvent
@@ -2246,7 +2224,7 @@ local _keyEvent = {
     spaceKey = undefined,
 
     ---Stops propagating this event to other parent widget/main Aseprite window. Use this in case that your canvas widget used the key and you want to avoid triggering a command with a keyboard shortcut.
-    stopPropagation = function(self) end,
+    stopPropagation = function (self) end,
 }
 
 ---Layers are arranged as a stack within a sprite. Layers may nest within each other to form a hierarchy. Layers that accept children are group layers.
@@ -2394,7 +2372,7 @@ local _layer = {
     ---Returns a cel, if any, at the intersection of the layer and a frame. The frame may be either a frame object or its frame number, an integer. If there is no cel at that intersection, returns `nil`.
     ---@param frame integer | Frame
     ---@return Cel | nil
-    cel = function(self, frame) end,
+    cel = function (self, frame) end,
 
     ---Gets or sets the tileset associated to this layer only when it's a tilemap (returns nil in other case).
     ---@type Tileset | nil
@@ -2460,17 +2438,17 @@ local _mouseEvent = {
 local _palette = {
     ---Changes the number of the palette colors to `ncolors` (an integer value).
     ---@param ncolors integer
-    resize = function(self, ncolors) end,
+    resize = function (self, ncolors) end,
 
     ---Returns the `Color` in the given entry `index` (the `index` goes from `0` to `#palette-1`).
     ---@param index integer
     ---@return Color
-    getColor = function(self, index) end,
+    getColor = function (self, index) end,
 
     ---Changes a palette color in the given entry `index` (the `index` goes from `0` to `#palette-1`). The `color` can be a `Color` object or an integer pixel value.
     ---@param index integer
     ---@param color Color | integer
-    setColor = function(self, index, color) end,
+    setColor = function (self, index, color) end,
 
     ---At the moment it always return the first frame, but in a
     ---near future Aseprite will support palette changes over time (in
@@ -2481,7 +2459,7 @@ local _palette = {
 
     ---Saves the palette in the given `filename`.
     ---@param filename string
-    saveAs = function(self, filename) end,
+    saveAs = function (self, filename) end,
 }
 
 ---```lua
@@ -2504,7 +2482,7 @@ local _palette = {
 ---@overload fun(otherPalette: Palette): Palette
 ---@overload fun(options: { fromFile: string })
 ---@overload fun(options: { fromResource: string })
-function Palette() end
+function Palette () end
 
 ---Since Aseprite v1.2.18 we can create [plugins](https://www.aseprite.org/docs/extensions/) with scripts.
 ---@class Plugin
@@ -2544,7 +2522,7 @@ local _plugin = {
     ---* `onclick`: Function to be called when the command is executed (clicked or an associated keyboard shortcut pressed).
     ---* `onenabled`: Optional function to know if the command should be available (enabled or disabled). It should return true if the command can be executed right now. If this function is not specified the command will be always available to be executed by the user.
     ---@param init PluginInit
-    newCommand = function(self, init) end,
+    newCommand = function (self, init) end,
 
     ---@alias MenuGroupInit { id: string, title: string, group: string }
     ---```lua
@@ -2562,7 +2540,7 @@ local _plugin = {
     ---* `id`: ID to identify this new menu group in `Plugin:newCommand{ ..., group=id, ... }` calls to add several command/menu items as elements of this group submenu.
     ---* `group`: In which existent group we should add this new menu item. Existent app groups are defined in the [`gui.xml` file](https://github.com/aseprite/aseprite/blob/main/data/gui.xml) inside the `<menus>` element.
     ---@param init MenuGroupInit
-    newMenuGroup = function(self, init) end,
+    newMenuGroup = function (self, init) end,
 
     ---```lua
     ---function init(plugin)
@@ -2574,7 +2552,7 @@ local _plugin = {
     ---
     ---Creates a menu separator in the given menu group, useful to separate several `Plugin:newCommand`.
     ---@param options { group: string }
-    ewMenuSeparator = function(self, options) end,
+    ewMenuSeparator = function (self, options) end,
 }
 
 ---@class Point
@@ -2592,7 +2570,7 @@ local _point = {
 ---@overload fun(x: integer?, y: integer?)
 ---@overload fun(options: { x: integer?, y: integer? }): Point
 ---@overload fun(numbers: { [1]: integer?, [2]: integer? }): Point
-function Point() end
+function Point () end
 
 ---This class is used to represent the range of selected objects.
 ---
@@ -2683,14 +2661,14 @@ local _range = {
     ---
     ---Returns true if the given object (layer/frame/cel/slice) is inside the selected range.
     ---@param object Layer | Frame | Cel | Slice
-    contains = function(self, object) end,
+    contains = function (self, object) end,
 
     ---Returns true if the given color index is selected in the [color bar](https://www.aseprite.org/docs/color-bar/).
     ---@param colorIndex integer
-    containsColor = function(self, colorIndex) end,
+    containsColor = function (self, colorIndex) end,
 
     ---Clears the current selected range of frames/layers/cels/colors.
-    clear = function(self) end,
+    clear = function (self) end,
 }
 
 --Creates a new `Rectangle` instance
@@ -2743,22 +2721,22 @@ local _rectangle = {
     ---```
     ---@param otherRectangle Rectangle
     ---@return boolean
-    contains = function(self, otherRectangle) end,
+    contains = function (self, otherRectangle) end,
 
     ---Returns true if `rectangle` intersects in some way `otherRectangle`.
     ---@param otherRectangle Rectangle
     ---@return boolean
-    intersects = function(self, otherRectangle) end,
+    intersects = function (self, otherRectangle) end,
 
     ---Returns the new rectangle `newRectangle` which is the intersection of `rectangle` and `otherRectangle`. If both rectangles don't intersect each other, the result will be an empty rectangle.
     ---@param otherRectangle Rectangle
     ---@return Rectangle
-    intersect = function(self, otherRectangle) end,
+    intersect = function (self, otherRectangle) end,
 
     ---Returns the new rectangle `newRectangle` which will be a rectangle big enough to contains both given rectangles `rectangle` and `otherRectangle`.
     ---@param otherRectangle Rectangle
     ---@return Rectangle
-    union = function(self, otherRectangle) end,
+    union = function (self, otherRectangle) end,
 }
 
 ---Creates a new `Rectangle` instance.
@@ -2776,7 +2754,7 @@ local _rectangle = {
 ---@overload fun(x: integer, y: integer, width: integer, height: integer): Rectangle
 ---@overload fun(options: { x: integer, y: integer, width: integer, height: integer }): Rectangle
 ---@overload fun(numbers: { [1]: integer, [2]: integer, [3]: integer, [4]: integer })
-function Rectangle() end
+function Rectangle () end
 
 ---@class Selection
 local _selection = {
@@ -2792,41 +2770,41 @@ local _selection = {
     ---@type boolean
     isEmpty = undefined,
 
-    deselect = function(self) end,
+    deselect = function (self) end,
 
     ---Replaces the selection with the given rectangle. If you want to add a rectangle to the selection, you can use `Selection:add()`.
     ---@param rectangle Rectangle
-    select = function(self, rectangle) end,
+    select = function (self, rectangle) end,
 
     ---Selected the whole sprite canvas. Only valid for a `sprite.selection`.
-    selectAll = function(self) end,
+    selectAll = function (self) end,
 
     ---Adds a new rectangle (or `otherSelection`) to the `selection`. Creating an union between the existent selected area and the given `rectangle`/`otherSelection`.
     ---@param rectangle Rectangle
     ---@overload fun(self, otherSelection: Selection)
-    add = function(self, rectangle) end,
+    add = function (self, rectangle) end,
 
     ---Subtracts the given `rectangle` (or `otherSelection`) from `selection`.
     ---@param rectangle Rectangle
     ---@overload fun(self, otherSelection: Selection)
-    subtract = function(self, rectangle) end,
+    subtract = function (self, rectangle) end,
 
     ---Creates an intersection in `selection` between the given `rectangle` (or `otherSelection`) and the already selected area in `selection`.
     ---@param rectangle Rectangle
     ---@overload fun(self, otherSelection: Selection)
-    intersect = function(self, rectangle) end,
+    intersect = function (self, rectangle) end,
 
     ---Returns true or false if the given point is inside the selection.
     ---@param point Point
     ---@return boolean
     ---@overload fun(self, x: integer, y: integer)
-    contains = function(self, point) end,
+    contains = function (self, point) end,
 }
 
 ---Creates a new empty selection, or with the given rectangle.
 ---@param rectangle? Rectangle
 ---@return Selection
-function Selection(rectangle) end
+function Selection (rectangle) end
 
 ---This is an object that saves the active state of the editor in a specific moment. Which active sprite, layer, frame, cel, image, etc. where in a specific moment.
 ---
@@ -2884,7 +2862,7 @@ local _size = {
     ---Returns the new size `newSize` which will be big enough to contains both given dimensions (`size` and `otherSize`).
     ---@param otherSize Size
     ---@return Size
-    union = function(self, otherSize) end,
+    union = function (self, otherSize) end,
 }
 
 ---Creates a new `Size` instance with the given dimensions (or `width=height=0` if they are not specified).
@@ -2894,7 +2872,7 @@ local _size = {
 ---@overload fun(options: { width: integer, height: integer }): Size
 ---@overload fun(options: { w: integer, h: integer }): Size
 ---@overload fun(numbers: { [1]: integer, [2]: integer }): Size
-function Size() end
+function Size () end
 
 ---An object that allows for [nine-slice scaling](https://en.wikipedia.org/wiki/9-slice_scaling). It can be created with the slice tool or with `Sprite:newSlice`.
 ---@class Slice
@@ -2902,7 +2880,6 @@ local _slice = {
     --- Gets or sets a slice's bounding rectangle.
     ---@type Rectangle
     bounds = undefined,
-
 
     ---Gets or sets the central rectangle of a slice's nine-slice. The getter returns `nil` when nine-slicing is inactive in Aseprite's user interface. The rectangle's top-left corner is defined in local coordinates.
     ---
@@ -3045,7 +3022,7 @@ local _sprite = {
     ---@param width integer
     ---@param height integer
     ---@overload fun(self, size: Size)
-    resize = function(self, width, height) end,
+    resize = function (self, width, height) end,
 
     ---Crops the sprite to the given dimensions.
     ---@param x integer
@@ -3053,18 +3030,18 @@ local _sprite = {
     ---@param width integer
     ---@param height integer
     ---@overload fun(self, rectangle: Rectangle)
-    crop = function(self, x, y, width, height) end,
+    crop = function (self, x, y, width, height) end,
 
     ---Saves the sprite to the given file and marks the sprite as saved so closing it won't ask to save changes.
     ---@param filename string
-    saveAs = function(self, filename) end,
+    saveAs = function (self, filename) end,
 
     ---Saves a copy of the sprite in the given file but doesn't change the saved state of the sprite, if the sprite is modified and then try to close it, the user will be asked to save changes.
     ---@param filename string
-    saveCopyAs = function(self, filename) end,
+    saveCopyAs = function (self, filename) end,
 
     ---Closes the sprite. This doesn't ask the user to save changes. If you want to do the classic *File > Close* where the user is asking to save changes, you can use `app.command.CloseFile()`.
-    close = function(self) end,
+    close = function (self) end,
 
     ---Sets the sprite palette loading it from the given file.
     ---
@@ -3074,81 +3051,79 @@ local _sprite = {
     ---sprite:setPalette(Palette{ fromFile=filename })
     ---```
     ---@param filename string
-    loadPalette = function(self, filename) end,
+    loadPalette = function (self, filename) end,
 
     ---Changes the sprite palette.
     ---@param palette Palette
-    setPalette = function(self, palette) end,
+    setPalette = function (self, palette) end,
 
     ---Assign a new color space to the sprite without modifying the sprite pixels.
     ---@param colorSpace ColorSpace
-    assignColorSpace = function(self, colorSpace) end,
+    assignColorSpace = function (self, colorSpace) end,
 
     ---Converts all the sprite pixels to a new color space so the image looks the same as in the previous color space (all pixels will be adjusted to the new color space).
     ---@param colorSpace ColorSpace
-    convertColorSpace = function(self, colorSpace) end,
+    convertColorSpace = function (self, colorSpace) end,
 
     ---Creates a new layer at the top of the layers stack.
     ---@return Layer
-    newLayer = function(self) end,
+    newLayer = function (self) end,
 
     ---Creates a new empty layer group at the top of the layers stack.
     ---@return Layer
-    newGroup = function(self) end,
+    newGroup = function (self) end,
 
     ---Deletes the given layer or the layer with the given `layerName` (a string).
     ---@param layerName string
     ---@overload fun(self, layer: Layer)
-    deleteLayer = function(self, layerName) end,
-
+    deleteLayer = function (self, layerName) end,
 
     ---Creates a copy of the given frame object or frame number and returns a `Frame` that points to the newly created frame in `frameNumber` position.
     ---@param frame Frame
     ---@return Frame
     ---@overload fun(self, frameNumber: integer)
-    newFrame = function(self, frame) end,
+    newFrame = function (self, frame) end,
 
     ---Creates a new empty frame in the given `frameNumber` (an integer) and returns the new frame.
     ---@param frameNumber integer
     ---@return Frame
-    newEmptyFrame = function(self, frameNumber) end,
+    newEmptyFrame = function (self, frameNumber) end,
 
     ---@param frame Frame
-    deleteFrame = function(self, frame) end,
-
+    deleteFrame = function (self, frame) end,
 
     ---Creates a new cel in the given layer and `frame` number. If the image is not specified, a new image will be created with the size of the sprite canvas. The position is a point to locate the image.
     ---@param layer Layer
     ---@param frame Frame
     ---@param image Image?
     ---@param position Point?
-    newCel = function(self, layer, frame, image, position) end,
+    newCel = function (self, layer, frame, image, position) end,
 
     ---Deletes the given cel. If the cel is from a transparent layer, the cel is completely deleted, but if the cel is from a background layer, the cel will be delete with the background color.
     ---@param cel Cel
     ---@overload fun(self, layer: Layer, frame: Frame)
-    deleteCel = function(self, cel) end,
+    deleteCel = function (self, cel) end,
 
     ---Creates a new tag in the given frame range and with the given name.
     ---@param fromFrameNumber integer
     ---@param toFrameNumber integer
     ---@return Tag
-    newTag = function(self, fromFrameNumber, toFrameNumber) end,
+    newTag = function (self, fromFrameNumber, toFrameNumber) end,
 
     ---Deletes the given tag.
     ---@param tag Tag
     ---@overload fun(self, tagName: string)
-    deleteTag = function(self, tag) end,
+    deleteTag = function (self, tag) end,
 
     ---Returns a new slice.
     ---@return Slice
     ---@overload fun(self, rectangle: Rectangle): Slice
-    newSlice = function(self) end,
+    newSlice = function (self) end,
 
     ---Deletes the given slice.
     ---@param slice Slice
     ---@overload fun(self, sliceName: string)
-    deleteSlice = function(self, slice) end,
+    deleteSlice = function (self, slice) end,
 
     ---Returns a new tileset and adds it to the sprite's tilesets.
     ---
@@ -3163,25 +3138,25 @@ local _sprite = {
     ---@overload fun(grid: unknown, numTiles: integer?): Tileset
     ---@overload fun(rectangle: Rectangle, numTiles: integer?): Tileset
     ---@overload fun(anotherTileset: Tileset): Tileset
-    newTileset = function(self) end,
+    newTileset = function (self) end,
 
     ---Deletes the given tileset from the sprite's tilesets.
     ---@param tileset Tileset
     ---@overload fun(self, tilesetIndex: integer)
-    deleteTileset = function(self, tileset) end,
+    deleteTileset = function (self, tileset) end,
 
     ---Inserts an empty tile into the given [tileset](https://github.com/aseprite/api/blob/next-version/api/tileset.md#tileset) at a given `tileIndex`. If `tileIndex` is not provided, the new tile is added to the end of the tileset. This method generates undo information, so you could use it as an individual operation or in a [transaction](https://github.com/aseprite/api/blob/main/api/app.md#apptransaction).
     ---@param tileset Tileset
     ---@param tileIndex integer?
-    newTile = function(self, tileset, tileIndex) end,
+    newTile = function (self, tileset, tileIndex) end,
 
     ---Removes a `tile` from a [tileset](https://github.com/aseprite/api/blob/next-version/api/tileset.md#tileset). This method generates undo information, so you could use it as an individual operation or in a [transaction](https://github.com/aseprite/api/blob/main/api/app.md#apptransaction).
     ---@param tile Tile
     ---@overload fun(self, tileset: Tileset, tileIndex: integer)
-    deleteTile = function(self, tile) end,
+    deleteTile = function (self, tile) end,
 
     ---Flatten all layers of the sprite into one layer. It's like calling `app.commands.FlattenLayers()`.
-    flatten = function(self) end,
+    flatten = function (self) end,
 
     ---Returns the `Events` object to associate functions that can act like listeners of specific `Sprite` events. E.g.
     ---
@@ -3226,7 +3201,7 @@ local _sprite = {
 ---@overload fun(spec: ImageSpec): Sprite
 ---@overload fun (otherSprite: Sprite): Sprite
 ---@overload fun(options: { fromFile: string, oneFrame: boolean? }): Sprite
-function Sprite(width, height, colorMode) end
+function Sprite (width, height, colorMode) end
 
 ---Represents [a tag in the timeline](https://www.aseprite.org/docs/tags/).
 ---@class Tag
@@ -3322,7 +3297,7 @@ local _theme = {
     ---https://github.com/aseprite/aseprite/blob/0c092cc37c193786bad702c0830b739f5ff808e0/data/extensions/aseprite-theme/theme.xml#L446
     ---@param styld_id string
     ---@return { border: { left: integer, top: integer, right: integer, bottom: integer } }
-    styleMetrics = function(styld_id) end,
+    styleMetrics = function (styld_id) end,
 }
 
 ---Represents a tile from a Tileset.
@@ -3377,7 +3352,7 @@ local _tileset = {
     ---Returns the tile in the given index (`0` is the empty tile, so `1` is the first user-defined tile).
     ---@param index integer
     ---@return Tile
-    tile = function(self, index) end,
+    tile = function (self, index) end,
 
     ---Returns the image of tile in the given index (`0` is the empty tile, so `1` is the first user-defined tile).
     ---
@@ -3389,9 +3364,8 @@ local _tileset = {
     ---@deprecated
     ---@param index integer
     ---@return Image
-    getTile = function(self, index) end,
+    getTile = function (self, index) end,
 }
-
 
 ---The Timer class can be used to execute a function periodically.
 ---
@@ -3421,10 +3395,10 @@ local _tileset = {
 ---@class Timer
 local _timer = {
     ---Starts the timer.
-    start = function(self) end,
+    start = function (self) end,
 
     ---Stops the timer.
-    stop = function(self) end,
+    stop = function (self) end,
 
     ---Returns the interval of this specific timer (in seconds).
     ---@type number
@@ -3447,7 +3421,7 @@ local _timer = {
 ---* `ontick`: Function that is called each time the specified number of seconds ellapses.
 ---@param init TimerInit
 ---@return Timer
-function Timer(init) end
+function Timer (init) end
 
 ---References a drawing tool. At the moment this class is used only to get and set the active tool (`app.tool`), or to paint on the canvas (`tool` parameter in `app.useTool()`).
 ---
@@ -3558,7 +3532,7 @@ local _version = {
 ---You can create a new version from a string. Then access each field
 ---@param versionString string
 ---@return Version
-function Version(versionString) end
+function Version (versionString) end
 
 ---Represents an UUID (*Universally Unique IDentifier*), a 16-bytes unique identifier.
 ---
@@ -3580,7 +3554,7 @@ local _uuid = {}
 ---You can create a new random UUID using `Uuid()` or a UUID representation of the given 36-chars string.
 ---@param uuidString string?
 ---@return Uuid
-function Uuid(uuidString) end
+function Uuid (uuidString) end
 
 ---WebSocket
 ---@class WebSocket
@@ -3590,10 +3564,10 @@ WebSocket = {
     url = undefined,
 
     ---Try connecting to the server. After a successful connection, `onreceive` function will be called with message type `WebSocketMessageType.OPEN`. When the server or network breaks the connection, the client tries reconnecting automatically.
-    connect = function(self) end,
+    connect = function (self) end,
 
     ---Disconnects from the server. After a disconnect, `onreceive` function will be called with message type `WebSocketMessageType.CLOSE`.
-    close = function(self) end,
+    close = function (self) end,
 
     ---```lua
     ---WebSocket:sendText(str1, str2, ...)
@@ -3601,7 +3575,7 @@ WebSocket = {
     ---
     ---Sends a text message to the server. If multiple strings are passed, they will be joined together.
     ---@param ... string
-    sendText = function(self, ...) end,
+    sendText = function (self, ...) end,
 
     ---```lua
     ---WebSocket:sendBinary(bstr1, bstr2, ...)
@@ -3609,7 +3583,7 @@ WebSocket = {
     ---
     ---Sends a binary message to the server. If multiple strings are passed, they will be joined together. Lua makes no distinction between character and byte strings, but the websocket protocol does label them.
     ---@param ... string
-    sendBinary = function(self, ...) end,
+    sendBinary = function (self, ...) end,
 
     ---```lua
     ---WebSocket:sendPing(str)
@@ -3617,7 +3591,7 @@ WebSocket = {
     ---
     ---Sends a very short ping message to the server. There's a limit to the length of data that can be sent. It's sometimes used to prevent the connection from timing out and closing. A standard compliant server will reply to every "ping" message with a "pong". Client pongs are sent automatically, and there's no need to control that. Sends a very short ping message to the server; There's a limit to the length of data that can be sent
     ---@param str string
-    sendPing = function(self, str) end
+    sendPing = function (self, str) end,
 }
 
 ---@alias WebSocketInit { url: string, onreceive: fun(message: string, data: any), deflate: boolean?, minreconnectwait: number?, maxreconnectwait: number? }
@@ -3664,7 +3638,7 @@ WebSocket = {
 ---```
 ---@param init WebSocketInit
 ---@return WebSocket
-function WebSocket(init) end
+function WebSocket (init) end
 
 ---References a window of the program. At the moment we can access only the main window using app.window.
 ---@class Window
