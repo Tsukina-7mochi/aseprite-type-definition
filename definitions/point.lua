@@ -1,4 +1,4 @@
----@eta
+---@meta
 
 ---@class Point
 local _point = {
@@ -9,6 +9,7 @@ local _point = {
     y = nil,
 }
 
+---Creates a new `Point` instance with the given coordinates (or `x=y=0` if they are not specified).
 ---@return Point
 ---@overload fun(otherPoint: Point): Point
 ---@overload fun(x: integer, y: integer)

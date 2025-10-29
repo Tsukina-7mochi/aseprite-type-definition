@@ -1,5 +1,6 @@
 ---@meta
 
+---Mouse cursor that can be set in a [canvas widget](lua://Dialog.canvas) using: `dialog:modify{ id=canvasId, mousecursor=newMouseCursor }`
 ---@class MouseCursor
 MouseCursor = {
     ---@type MouseCursor

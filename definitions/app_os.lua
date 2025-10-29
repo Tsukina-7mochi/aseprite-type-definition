@@ -1,36 +1,34 @@
 ---@meta
 
+---A set of functions to get properties about the running Operating System platform.
 app.os = {
+    ---Returns the platform name. It can be `Windows`, `macOS`, or `Linux`.
     ---@type "Windows" | "macOS" | "Linux"
     name = nil,
 
+    ---Returns an [`Version`](lua://Version) with the Windows or macOS version. It's just `0.0.0` on Linux.
     ---@type Version
     version = nil,
 
+    ---Returns the full platform name with its version. On Linux returns the distribution name with its specific version.
     ---@type string
     fullName = nil,
 
-    ---Returns `true` if we are running in the windows platform.
     ---@type boolean
     windows = nil,
 
-    ---Returns `true` if we are running in the macos platform.
     ---@type boolean
     macos = nil,
 
-    ---Returns `true` if we are running in the linux platform.
     ---@type boolean
     linux = nil,
 
-    ---Returns `true` if we are running in the x64 platform.
     ---@type boolean
     x64 = nil,
 
-    ---Returns `true` if we are running in the x86 platform.
     ---@type boolean
     x86 = nil,
 
-    ---Returns `true` if we are running in the arm64 platform.
     ---@type boolean
     arm64 = nil,
 }

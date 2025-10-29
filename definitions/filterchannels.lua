@@ -21,12 +21,15 @@ FilterChannels = {
     ---@type FilterChannels
     INDEX = nil,
 
+    ---Same as `FilterChannels.RED | FilterChannels.GREEN | FilterChannels.BLUE`.
     ---@type FilterChannels
     RGB = nil,
 
+    ---Same as `FilterChannels.RED | FilterChannels.GREEN | FilterChannels.BLUE | FilterChannels.ALPHA`.
     ---@type FilterChannels
     RGBA = nil,
 
+    ---Same as `FilterChannels.GRAY | FilterChannels.ALPHA`.
     ---@type FilterChannels
     GRAYA = nil,
 }

@@ -1,5 +1,6 @@
 ---@meta
 
+---Type of sprite sheet used in [app.command.ExportSpriteSheet](lua://command/ExportSpriteSheet#exportspritesheet).
 ---@class SpriteSheetType
 SpriteSheetType = {
     ---@type SpriteSheetType

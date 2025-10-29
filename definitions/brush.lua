@@ -1,5 +1,6 @@
 ---@meta
 
+---Identifies a brush to paint with [app.useTool()](lua://app.useTool) function.
 ---@class Brush
 local _brush = {
     ---@type BrushType

@@ -1,10 +1,13 @@
 ---@meta
 
+---Blend modes defines how the colors should be mixed when two images overlaps. Used in [Image:drawImage()](lua://Image.drawImage) as input argument.
 ---@class BlendMode
 BlendMode = {
+    ---Mix the background colors with the blending image proportionally to its alpha values. Full transparent pixels will show the background.
     ---@type BlendMode
     NORMAL = nil,
 
+    ---A simple copy/paste of the blending image to the background.
     ---@type BlendMode
     SRC = nil,
 
