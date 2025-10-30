@@ -1,0 +1,57 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get current source hash
+        id: version
+        uses: ./.github/actions/get-current-source-hash
+
+      - name: Run build
+        run: ./build.sh
+
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="v-${{ steps.version.outputs.current_hash }}"
+          RELEASE_TITLE="Release v-${{ steps.version.outputs.current_hash_short }}"
+
+          # Check if tag already exists
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists. Skipping release creation."
+            exit 0
+          fi
+
+          # Create release body
+          REPO_URL="https://github.com/aseprite/api"
+          RELEASE_BODY="$(cat <<EOF
+          Type definitions for Aseprite scripting API
+
+          ## Source Information
+          - Based on commit: \`${{ steps.version.outputs.current_hash }}\`
+          - Source repository: ${REPO_URL}
+          - View source: ${REPO_URL}/tree/${{ steps.version.outputs.current_hash }}
+
+          ## Installation
+          Download \`aseprite.lua\` and place it in your Lua language server workspace.
+          EOF
+          )"
+
+          # Create draft release with artifact
+          gh release create "$TAG_NAME" \
+            --title "$RELEASE_TITLE" \
+            --notes "$RELEASE_BODY" \
+            --draft \
+            dist/aseprite.lua
