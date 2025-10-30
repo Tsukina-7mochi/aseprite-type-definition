@@ -1,0 +1,29 @@
+name: Get Current Source Hash
+description: Extract the current source commit hash from definitions/init.lua
+
+inputs:
+  init-file-path:
+    description: Path to the init.lua file containing the source commit hash
+    required: false
+    default: definitions/init.lua
+
+outputs:
+  current_hash:
+    description: The full current commit hash
+    value: ${{ steps.extract.outputs.current_hash }}
+  current_hash_short:
+    description: The short (7 characters) current commit hash
+    value: ${{ steps.extract.outputs.current_hash_short }}
+
+runs:
+  using: composite
+  steps:
+    - name: Read current commit hash
+      id: extract
+      shell: bash
+      run: |
+        CURRENT_HASH="$(cat ${{ inputs.init-file-path }} | grep 'based on' | awk '{print $4}')"
+        CURRENT_HASH_SHORT=${CURRENT_HASH:0:7}
+        echo "current_hash=$CURRENT_HASH" >> $GITHUB_OUTPUT
+        echo "current_hash_short=$CURRENT_HASH_SHORT" >> $GITHUB_OUTPUT
+        echo "Current commit hash: $CURRENT_HASH ($CURRENT_HASH_SHORT)"
