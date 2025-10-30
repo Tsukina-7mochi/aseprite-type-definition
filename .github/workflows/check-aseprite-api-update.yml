@@ -32,6 +32,8 @@ jobs:
       - name: Read current commit hash
         id: current-hash
         uses: ./.github/actions/get-current-source-hash
+        with:
+          init-file-path: ./definitions/aseprite.lua
 
       - name: Check if update is needed
         id: check
