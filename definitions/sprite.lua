@@ -58,7 +58,7 @@ local _sprite = {
     ---@type Cel[]
     cels = nil,
 
-    ---@tyepe Tag[]
+    ---@type Tag[]
     tags = nil,
 
     ---@type Slice[]
