@@ -21,7 +21,7 @@ jobs:
       - name: Run build
         run: ./build.sh
 
-      - name: Create draft release
+      - name: Create Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -37,7 +37,7 @@ jobs:
           done
 
           echo "Using tag name: $TAG_NAME"
-          RELEASE_TITLE="Release v-${{ steps.version.outputs.current_hash_short }}"
+          RELEASE_TITLE="Release v-${{ steps.version.outputs.current_hash }}=${INCREMENT}"
 
           # Create release body
           REPO_URL="https://github.com/aseprite/api"
