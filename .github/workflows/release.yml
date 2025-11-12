@@ -12,8 +12,11 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
+          # detch-depth: 0 is required to fetch tags
+          # https://github.com/actions/checkout/issues/1471
+          fetch-depth: 0
           fetch-tags: true
 
       - name: Get current source hash
