@@ -25,14 +25,19 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG_NAME="v-${{ steps.version.outputs.current_hash }}"
-          RELEASE_TITLE="Release v-${{ steps.version.outputs.current_hash_short }}"
+          BASE_TAG="v-${{ steps.version.outputs.current_hash }}"
+          TAG_NAME="$BASE_TAG"
+          INCREMENT=1
 
-          # Check if tag already exists
-          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
-            echo "Tag $TAG_NAME already exists. Skipping release creation."
-            exit 0
-          fi
+          # Find an available tag name by auto-incrementing
+          while git rev-parse "$TAG_NAME" >/dev/null 2>&1; do
+            echo "Tag $TAG_NAME already exists. Trying next increment..."
+            TAG_NAME="${BASE_TAG}-${INCREMENT}"
+            INCREMENT=$((INCREMENT + 1))
+          done
+
+          echo "Using tag name: $TAG_NAME"
+          RELEASE_TITLE="Release v-${{ steps.version.outputs.current_hash_short }}"
 
           # Create release body
           REPO_URL="https://github.com/aseprite/api"
@@ -53,5 +58,4 @@ jobs:
           gh release create "$TAG_NAME" \
             --title "$RELEASE_TITLE" \
             --notes "$RELEASE_BODY" \
-            --draft \
             dist/aseprite.lua
