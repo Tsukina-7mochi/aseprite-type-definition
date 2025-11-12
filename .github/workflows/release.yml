@@ -30,14 +30,14 @@ jobs:
           INCREMENT=1
 
           # Find an available tag name by auto-incrementing
-          while git rev-parse "$TAG_NAME" >/dev/null 2>&1; do
-            echo "Tag $TAG_NAME already exists. Trying next increment..."
-            TAG_NAME="${BASE_TAG}-${INCREMENT}"
-            INCREMENT=$((INCREMENT + 1))
+          while git tag | grep ${TAG_NAME} > /dev/null; do
+              echo "Tag $TAG_NAME already exists. Trying next increment..."
+              TAG_NAME="${BASE_TAG}-${INCREMENT}"
+              INCREMENT=$((INCREMENT + 1))
           done
 
-          echo "Using tag name: $TAG_NAME"
-          RELEASE_TITLE="Release v-${{ steps.version.outputs.current_hash }}=${INCREMENT}"
+          echo "Using tag name: ${TAG_NAME}"
+          RELEASE_TITLE="Release ${TAG_NAME}"
 
           # Create release body
           REPO_URL="https://github.com/aseprite/api"
