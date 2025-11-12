@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-tags: 1
 
       - name: Get current source hash
         id: version
@@ -54,7 +56,7 @@ jobs:
           EOF
           )"
 
-          # Create draft release with artifact
+          # Create release with artifact
           gh release create "$TAG_NAME" \
             --title "$RELEASE_TITLE" \
             --notes "$RELEASE_BODY" \
