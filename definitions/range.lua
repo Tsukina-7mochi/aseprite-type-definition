@@ -49,10 +49,12 @@ local _range = {
 
     ---Returns true if the given object ([layer](lua://Layer#layer)/[frame](lua://Frame#frame)/[cel](lua://Cel#cel)/[slice](lua://Slice#slice)) is inside the selected range.
     ---@param object Layer | Frame | Cel | Slice
+    ---@return boolean
     contains = function (self, object) end,
 
     ---Returns true if the given color index is selected in the [color bar](https://www.aseprite.org/docs/color-bar/).
     ---@param colorIndex integer
+    ---@return boolean
     containsColor = function (self, colorIndex) end,
 
     ---Clears the current selected range of frames/layers/cels/colors.
