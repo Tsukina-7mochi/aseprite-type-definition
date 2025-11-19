@@ -11,6 +11,6 @@ local _events = {
 
     ---Disconnects the given `function` from all events in the object, or stops/breaks only the specific connection identified by `listenerCode` (the code returned by [Events:on()](lua://Events.on)).
     ---@param listenerCode integer
-    ---@overload fun(callback: fun())
+    ---@overload fun(self, callback: fun())
     off = function (self, listenerCode) end,
 }
