@@ -1,7 +1,8 @@
 ---@meta
 
 ---This [app](lua://app) property contains a set of function to handle the color for [Image pixels](lua://Image.pixels) at the lowest level: an unsigned integer.
-app.pixelColor = {
+--- @class PixelColor
+local _pixelColor = {
     ---Constructs a 32-bit unsigned integer for [RGBA](lua://ColorMode.RGB) images. Alpha will be 255 (i.e. 100% opaque) if it's not specified.
     ---@param red integer
     ---@param green integer

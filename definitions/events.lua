@@ -5,7 +5,7 @@
 local _events = {
     ---Connects the given `function` (2nd argument) with the given event by `eventName` (a `string`, the event name/code/identifier). When the event happens in the future the function will be called automatically. This is like the `function` starts "listening" the event.
     ---@param eventName string
-    ---@param callback fun()
+    ---@param callback fun(event: { stopPropagation: fun() | nil, name: string | nil, params: table<string, any> | nil } | nil)
     ---@return integer listenerCode
     on = function (self, eventName, callback) end,
 

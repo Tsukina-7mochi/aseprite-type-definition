@@ -23,14 +23,16 @@ local _plugin = {
     preferences = nil,
 
     ---Creates a new command that can be associated to keyboard shortcuts and it's added in the app menu in the specific `"group"`. Groups are defined in the [gui.xml file](https://github.com/aseprite/aseprite/blob/main/data/gui.xml) inside the `<menus>` element. `onclick`: Function to be called when the command is executed (clicked or an associated keyboard shortcut pressed). `onenabled`: Optional function to know if the command should be available (enabled or disabled). It should return true if the command can be executed right now. If this function is not specified, the command will always be available to be executed by the user. `onchecked`: Optional function to know if the command should be checked or not. The function is called every time the command is displayed in a menu (e.g: a dropdown is opened). It should return true if it is checked. If this function is not specified, the command will be unchecked.
-    ---@param init {
-    ---    id: string,
-    ---    title: string,
-    ---    group: string,
-    ---    onclick: fun(),
-    ---    onenabled: fun(),
-    ---    onchecked: fun(),
-    ---}
+    ---
+    ---@class CommandInit
+    ---@field id string
+    ---@field title string
+    ---@field group string
+    ---@field onclick fun()
+    ---@field onenabled fun(): boolean
+    ---@field onchecked fun(): boolean
+    ---
+    ---@param init CommandInit
     newCommand = function (self, init) end,
 
     ---Creates a new menu item which will contain a submenu grouping several plugin commands. `id`: ID to identify this new menu group in [Plugin:newCommand{ ..., group=id, ... }](lua://Plugin#pluginnewcommand) calls to add several command/menu items as elements of this group submenu. `group`: In which existent group we should add this new menu item. Existent app groups are defined in the [gui.xml file](https://github.com/aseprite/aseprite/blob/main/data/gui.xml) inside the `<menus>` element.
