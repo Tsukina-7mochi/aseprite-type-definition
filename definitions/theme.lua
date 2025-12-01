@@ -1,7 +1,8 @@
 ---@meta
 
 ---Access information about the current theme.
-app.theme = {
+--- @class Theme
+local _theme = {
     ---The [color](lua://Color) can be used to paint in an [Image](lua://Image) or a [GraphicsContext](lua://GraphicsContext).
     ---@type table<string, Color>
     color = nil,
