@@ -59,7 +59,9 @@ local _graphicsContext = {
     ---Returns the [size](lua://Size) of the given text using the current font.
     ---@param text string
     ---@return Size
-    measureText = function (self, text) end,
+    measureText = function (self, text)
+        return Size(0, 0)
+    end,
 
     ---Draws on the canvas the given image.
     ---@param image Image
