@@ -89,6 +89,9 @@ app = {
     ---@type table<string, string>
     params = nil,
 
+    ---@type Theme
+    theme = nil,
+
     ---Returns the UI Elements Scaling value specified in *Edit > Preferences* as an scale factor (1 for 100%, 2 for 200%, etc.)
     ---@type number
     uiScale = nil,
