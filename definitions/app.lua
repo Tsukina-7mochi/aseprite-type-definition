@@ -50,10 +50,6 @@ app = {
     ---@type Window | nil
     window = nil,
 
-    ---This [pixelColor namespace](lua://PixelColor) contains internal functions to handle color at the lowest level.
-    ---@type PixelColor
-    pixelColor = nil,
-
     ---Returns the Aseprite version number as a [`Version`](lua://Version) object (e.g. `Version("1.2.10-beta1")`).
     ---@type Version
     version = nil,
