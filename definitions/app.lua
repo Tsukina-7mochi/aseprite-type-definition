@@ -50,10 +50,6 @@ app = {
     ---@type Window | nil
     window = nil,
 
-    ---This [pixelColor namespace](lua://PixelColor) contains internal functions to handle color at the lowest level.
-    ---@type PixelColor
-    pixelColor = nil,
-
     ---Returns the Aseprite version number as a [`Version`](lua://Version) object (e.g. `Version("1.2.10-beta1")`).
     ---@type Version
     version = nil,
@@ -88,6 +84,9 @@ app = {
     ---This is a table with parameters specified as `--script-param key=value` in the CLI or as `<param>` in `user.aseprite-keys` or `gui.xml` file.
     ---@type table<string, string>
     params = nil,
+
+    ---@type Theme
+    theme = nil,
 
     ---Returns the UI Elements Scaling value specified in *Edit > Preferences* as an scale factor (1 for 100%, 2 for 200%, etc.)
     ---@type number

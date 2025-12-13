@@ -28,8 +28,8 @@ local _plugin = {
     ---    title: string,
     ---    group: string,
     ---    onclick: fun(),
-    ---    onenabled: fun(),
-    ---    onchecked: fun(),
+    ---    onenabled: (fun(): boolean),
+    ---    onchecked: (fun(): boolean),
     ---}
     newCommand = function (self, init) end,
 
