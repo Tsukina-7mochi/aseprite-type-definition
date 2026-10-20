@@ -34,7 +34,7 @@ app = {
     ---@type Tag | nil
     tag = nil,
 
-    ---Returns the active tool (a [Tool](lua://Tool) object) selected in the tool bar.
+    ---Gets or sets the active tool (a [Tool](lua://Tool) object) selected in the [tool bar](https://www.aseprite.org/docs/workspace/).
     ---@type Tool
     tool = nil,
 
