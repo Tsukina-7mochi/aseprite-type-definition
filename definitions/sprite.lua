@@ -26,8 +26,13 @@ local _sprite = {
     ---@type integer
     id = nil,
 
+    ---Returns `true` if the sprite is modified compared to the latest saved state on disk.
     ---@type boolean
-    isModifier = nil,
+    isModified = nil,
+
+    ---Returns `true` if the sprite object is a valid object (the sprite is open).
+    ---@type boolean
+    isValid = nil,
 
     ---@type ColorSpace
     colorSpace = nil,
@@ -37,6 +42,10 @@ local _sprite = {
 
     ---@type ImageSpec
     spec = nil,
+
+    ---Gets or sets if the sprite should use [layer](lua://Layer) UUIDs.
+    ---@type boolean
+    useLayerUuids = nil,
 
     undoHistory = {
         ---@type integer

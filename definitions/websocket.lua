@@ -29,14 +29,14 @@ local _websocket = {
 ---
 ---* `url` specifies the server to connect.
 ---* `deflate` option enables compression before sending the data - if the server is running on the same machine, it might be faster to turn it off.
----* `onreceive` function will be called for every incoming message, and when the connection is established and broken. Its two arguments are the event type (see [`WebSocketMessageType`](lua://WebSocketMessageType)) and the received data (a string, can be empty).
+---* `onreceive` function will be called for every incoming message, and when the connection is established and broken. Its three arguments are the event type (see [`WebSocketMessageType`](lua://WebSocketMessageType)), the received data (a string, can be empty), and the error message (string, can be empty).
 ---* `minreconnectwait` and `maxreconnectwait` (in seconds) are optional values that limit the waiting time to try a reconnection to the server.
 ---@return WebSocket
----@overload fun(
+---@overload fun(options: {
 ---    url: string,
----    onreceive: fun(message: string, data: any),
----    deflate: boolean,
----    minreconnectwait: integer,
----    maxreconnectwait: integer,
----)
+---    onreceive: fun(message: WebSocketMessageType, data: string, error: string),
+---    deflate: boolean?,
+---    minreconnectwait: number?,
+---    maxreconnectwait: number?,
+---}): WebSocket
 function WebSocket () end

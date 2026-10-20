@@ -68,6 +68,10 @@ local _color = {
     grayPixel = nil,
 }
 
+---* If `alpha` argument is not specified, it's 255 by default (opacity = 100%).
+---* The `Color{ index=integer }` returns the color at the specified index from the palette.
+---* The `Color{ tile=integer }` returns a special "tile color" at the specified index from the current tileset. This "tile color" can be used to pass tiles into parameters that require the color object (e.g: `app.useTool{color=Color{tile=integer}}`).
+---* The `Color(integer)` constructor receives a [pixel color](lua://app.pixelColor) and the integer is interpreted depending on the [active sprite](lua://app.sprite).
 ---@param index integer
 ---@return Color
 ---@overload fun(options: { r: number, g: number, b: number, a: integer }): Color
@@ -78,4 +82,5 @@ local _color = {
 ---@overload fun(options: { hue: number, saturation: number, lightness: number, alpha: integer }): Color
 ---@overload fun(options: { gray: integer, alpha: integer }): Color
 ---@overload fun(options: { index: integer }): Color
+---@overload fun(options: { tile: integer }): Color
 function Color (index) end

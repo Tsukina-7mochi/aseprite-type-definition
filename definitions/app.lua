@@ -55,7 +55,7 @@ app = {
     version = nil,
 
     ---Returns the API version. See the changes file between version to know what offer each API version.
-    apiVersion = 36,
+    apiVersion = 39,
 
     ---Gets or sets the current foreground [color](lua://Color).
     ---@type Color

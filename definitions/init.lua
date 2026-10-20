@@ -1,3 +1,3 @@
 ---@meta
 
---based on https://github.com/aseprite/api.git 2004669571aba4d8cdc0e6fdfa9b272ed4390bcc
+--based on https://github.com/aseprite/api.git 06ee1b6a58786308f321c82ff81b2c86b44f34b2
