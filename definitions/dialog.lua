@@ -20,6 +20,15 @@ local _dialog = {
     sizeHint = nil,
 
     ---Creates a button.
+    ---
+    ---Arguments (table fields):
+    ---
+    ---* `id`: Identifier for this button. [Dialog.data](lua://Dialog.data) will contain a field for each widget with an `id`.
+    ---* `label`: Text label on the left side of the control.
+    ---* `text`: Text displayed on top of the button.
+    ---* `selected`: True in case that you want to show the button checked by default.
+    ---* `focus`: Focus this button by default or when the Enter key is pressed in an [text entry](lua://Dialog.entry) field.
+    ---* `onclick`: Function to be called when the button is pressed. When omitted, clicking the button closes it's Dialog, as if [Dialog:close()](lua://Dialog.close) was called.
     ---@param init {
     ---    id: string?,
     ---    label: string?,
