@@ -21,7 +21,7 @@ local _sprite = {
     ---@type Selection
     selection = nil,
 
-    ---Gets or sets the name of the file from which this sprite was loaded or saved, or an empty string if this is a new sprite without an associated file.
+    ---Gets or sets the name of the file from which this sprite was loaded or saved, or returns the sprite title if it's a new sprite without an associated file.
     ---@type string
     filename = nil,
 
@@ -35,6 +35,10 @@ local _sprite = {
     ---Returns `true` if the sprite object is a valid object (the sprite is open).
     ---@type boolean
     isValid = nil,
+
+    ---Returns true if the sprite was loaded from or saved to a file on the disk.
+    ---@type boolean
+    hasAssociatedFile = nil,
 
     ---@type ColorSpace
     colorSpace = nil,
