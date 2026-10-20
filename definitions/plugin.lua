@@ -62,4 +62,23 @@ local _plugin = {
     ---    group: string,
     ---}
     newMenuSeparator = function (self, options) end,
+
+    ---Registers a new file format handler.
+    ---
+    ---* `name`: Optional, will use the first extension registered otherwise
+    ---* `binary`: Optional, whether the file will be opened in binary mode or not (set to `false` for text-only formats, otherwise defaults to `true`)
+    ---* `supports`: Optional, a set of flags specifying the capabilities of this format, see [FormatSupport](lua://FormatSupport) for a description of each flag. Defaults to `FILE_SUPPORT_RGB | FILE_SUPPORT_RGBA | FILE_SUPPORT_GRAY | FILE_SUPPORT_GRAYA | FILE_SUPPORT_INDEXED`.
+    ---* `extensions`: The extension to be registered, without the dot ("."). They cannot overlap with an existing format that Aseprite supports (for example, "png"), if the format has already been registered by either Aseprite itself or another plugin, registration will fail with an error.
+    ---* `onload/onsave`: The function that is called for the extension to convert the given file to one or multiple Sprites. It is called with a table argument containing a `file` and `filename`. The `file` is an open Lua file handle to whatever we're loading or saving. For loading, this function must return a Sprite object on success, or raise an error otherwise. For saving, the function should return a boolean on success or failure, or raise an error to give the user more details.
+    ---
+    ---For an example of a minimal implementation of a file format, see [here](https://github.com/ckaiser/aseprite-ppm-example).
+    ---@param init {
+    ---    name: string?,
+    ---    binary: boolean?,
+    ---    supports: integer?,
+    ---    extensions: string[],
+    ---    onload: (fun(ev: { file: file*, filename: string }): Sprite),
+    ---    onsave: (fun(ev: { file: file*, filename: string }): boolean),
+    ---}
+    newFileFormat = function (self, init) end,
 }
