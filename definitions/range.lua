@@ -15,7 +15,9 @@ local _range = {
     ---@type Sprite
     sprite = nil,
 
-    ---Returns or sets the array of selected [layers](lua://Layer#layer).
+    ---Returns or sets the array of selected [layers](lua://Layer).
+    ---
+    ---Note that the array is sorted chronologically, in order of when the layers were created. The order does not match the order seen on the timeline, nor the order in which they were selected.
     ---@type Layer[]
     layers = nil,
 
