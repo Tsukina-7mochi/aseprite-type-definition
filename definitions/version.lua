@@ -1,6 +1,6 @@
 ---@meta
 
----Represents a version number and provides an easy way to compare if the [`app.version`](lua://App.version) is greater or equal than a specific expected version.
+---Represents a version number and provides an easy way to compare if the [`app.version`](lua://app.version) is greater or equal than a specific expected version. Example:
 ---@class Version
 local _version = {
     ---Returns the first number of the version.
@@ -24,7 +24,7 @@ local _version = {
     prereleaseNumber = nil,
 }
 
----You can create a new version from a string. Then access each field
+---You can create a new version from a string, then access each field
 ---@param versionString string
 ---@return Version
 function Version (versionString) end

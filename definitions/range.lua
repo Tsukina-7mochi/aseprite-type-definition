@@ -11,7 +11,7 @@ local _range = {
     ---@type boolean
     isEmpty = nil,
 
-    ---[Sprite](lua://Sprite#sprite) to which this range is pointing to.
+    ---The [Sprite](lua://Sprite) to which this range points.
     ---@type Sprite
     sprite = nil,
 
@@ -29,7 +29,7 @@ local _range = {
     ---@type Cel[]
     cels = nil,
 
-    ---Returns an array of selected [images](lua://Image#image) (images from linked cels are counted just one time in this array).
+    ---Returns an array of selected [images](lua://Image) (images from linked cels are counted only once in this array).
     ---@type Image[]
     images = nil,
 

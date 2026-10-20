@@ -1,5 +1,11 @@
 ---@meta
 
+---If a function receives a point as an argument, it can be one of several things:
+---
+---1. You can specify two parameters `x, y` directly as arguments of the function. E.g. `selection:contains(8, 20)`
+---1. You can specify an object with `x` and `y` properties. E.g. `selection:contains{ x=8, y=20 }`
+---1. You can specify an array with two elements: E.g. `selection:contains{ 8, 20 }`
+---1. You can specify a `Point` instance: E.g. `selection:contains(Point(8, 20))`
 ---@class Point
 local _point = {
     ---@type integer

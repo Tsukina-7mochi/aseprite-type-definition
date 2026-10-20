@@ -7,7 +7,7 @@ local _editor = {
     ---@type Sprite
     sprite = nil,
 
-    ---Returns a [point](lua://Point) of the the mouse position on the sprite, i.e. what pixel is going to be changed if the user clicks the mouse.
+    ---Returns a [point](lua://Point) of the mouse position on the sprite, i.e. what pixel is going to be changed if the user clicks the mouse.
     ---@type Point
     spritePos = nil,
 

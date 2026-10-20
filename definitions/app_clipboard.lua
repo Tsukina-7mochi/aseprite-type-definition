@@ -14,7 +14,23 @@ app.clipboard = {
     ---@type Image | nil
     image = nil,
 
-    ---Gets the content of the clipboard, as a table.
+    ---Gets the content of the clipboard, as a table. Values:
+    ---
+    ---* `image`: An [image](lua://Image) object or `nil`
+    ---* `selection`: A [selection](lua://Selection) object or `nil`
+    ---* `palette`: A [palette](lua://Palette) object or `nil`
+    ---* `tileset`: A [tileset](lua://Tileset) object or `nil`
+    ---* `text`: A string or `nil`
+    ---
+    ---Depending on what is copied, each value will be set differently. Case table:
+    ---
+    ---|             |An image is copied in Aseprite      |An image is copied externally|Text is copied|A portion of the Palette is copied                       |
+    ---|-------------|------------------------------------|-----------------------------|--------------|---------------------------------------------------------|
+    ---|`image`    |[Image](lua://Image)             |[Image](lua://Image)      |`nil`         |`nil`                                                    |
+    ---|`selection`|[Selection](lua://Selection) |`nil`                        |`nil`         |`nil`                                                    |
+    ---|`palette`  |Sprite [palette](lua://Palette)|`nil`                        |`nil`         |`nil`                                                    |
+    ---|`tileset`  |`nil`                               |`nil`                        |`nil`         |`nil`                                                    |
+    ---|`text`     |`nil`                               |`nil`                        |String        |String of selected colors in hex codes, separated by `\n`|
     ---@type {
     ---  image: Image | nil,
     ---  selection: Selection | nil,

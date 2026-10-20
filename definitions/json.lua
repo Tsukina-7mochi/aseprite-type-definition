@@ -1,6 +1,6 @@
 ---@meta
 
----Since **Aseprite v1.3-rc5** you have this `json` global namespace. It provides a couple of functions to decode JSON objects from strings to Lua objects/tables and viceversa.
+---Since **Aseprite v1.3-rc5** you have this `json` global namespace. It provides a couple of functions to decode JSON objects from strings to Lua objects/tables and vice versa.
 json = {
     ---Parses the given `jsonText` and returns a Lua table-like object `jsonObj` that represents the given data.
     ---@param jsonText string

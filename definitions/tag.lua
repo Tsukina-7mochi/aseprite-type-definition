@@ -15,7 +15,7 @@ local _tag = {
     ---@type Frame
     toFrame = nil,
 
-    ---Returns the number of frames that this tag contain. Equal to: `local frames = tag.toFrame.frameNumber - tag.fromFrame.frameNumber + 1`
+    ---Returns the number of frames that this tag contains. Equal to:
     ---@type integer
     frames = nil,
 
