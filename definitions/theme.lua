@@ -7,7 +7,7 @@ local _theme = {
     ---@type table<string, Color>
     color = nil,
 
-    ---Returns a number identified in the dimensions of the theme.
+    ---Returns a number defined in the dimensions of the theme. List of possible dimensions: https://github.com/aseprite/aseprite/blob/3c77928a6f193748bcd8cca15d45000dd58e11d5/data/extensions/aseprite-theme/theme.xml#L11
     ---@type table<string, integer>
     dimension = nil,
 

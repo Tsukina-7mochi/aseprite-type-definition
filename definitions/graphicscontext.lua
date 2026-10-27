@@ -26,6 +26,8 @@ local _graphicsContext = {
     blendMode = nil,
 
     ---Opacity used in [stroke()](lua://GraphicsContext.stroke), [fill()](lua://GraphicsContext.fill), [drawImage()](lua://GraphicsContext.drawImage), etc.
+    ---
+    ---* `opacity`: 0 completely transparent, 255 completely opaque.
     ---@type integer
     opacity = nil,
 
@@ -62,6 +64,10 @@ local _graphicsContext = {
     measureText = function (self, text) end,
 
     ---Draws on the canvas the given image.
+    ---
+    ---If given *xy*-coordinates, the full image will be drawn at the specified position, in its original scale.
+    ---
+    ---If given source and destination [bounds](lua://Rectangle) (or their respective values), a part of the image is drawn (specified by the *srcRect*, or *srcX/srcY/srcW/srcH*, relative to the image) on the canvas (specified by the *dstRect* or *dstX/dstY/dstW/dstH*). This allows drawing only a part of and/or scaling the image.
     ---@param image Image
     ---@param x number
     ---@param y number

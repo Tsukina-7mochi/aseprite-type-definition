@@ -24,7 +24,7 @@ local _slice = {
     ---@overload fun(pluginKey: string): table<string, any>
     properties = nil,
 
-    ---Gets or sets the a slice's name, a `string`.
+    ---Gets or sets a slice's name, a `string`.
     ---@type string
     name = nil,
 

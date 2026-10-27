@@ -18,6 +18,10 @@ WebSocketMessageType = {
     ---@type WebSocketMessageType
     CLOSE = nil,
 
+    ---Connection encountered an error
+    ---@type WebSocketMessageType
+    ERROR = nil,
+
     ---See [the standard](https://datatracker.ietf.org/doc/html/rfc6455) about ping and pong.
     ---@type WebSocketMessageType
     PING = nil,

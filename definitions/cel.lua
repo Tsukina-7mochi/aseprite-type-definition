@@ -1,6 +1,6 @@
 ---@meta
 
----A [cel](https://www.aseprite.org/docs/cel/) is an [image](lua://Cel.image) in a specific [*xy*-coordinate](lua://Cel.position), and a specific [layer](lua://Cel.layer)/[frame](lua://Cel.frame) combination.
+---A [cel](https://www.aseprite.org/docs/cel/) is an [image](lua://Cel.image) at a specific [*xy*-coordinate](lua://Cel.position), and a specific [layer](lua://Cel.layer)/[frame](lua://Cel.frame) combination.
 ---@class Cel
 local _cel = {
     ---Cels belong to one [sprite](lua://Sprite). This property returns that sprite.
@@ -11,11 +11,11 @@ local _cel = {
     ---@type Layer
     layer = nil,
 
-    ---Returns the [frame](lua://Frame) object which this cel belongs. If you set this property, the cel will be moved to the given frame (if another cel already exists in that frame, it will be removed).
+    ---Returns the [frame](lua://Frame) object to which this cel belongs. If you set this property, the cel will be moved to the given frame (if another cel already exists in that frame, it will be removed).
     ---@type Frame
     frame = nil,
 
-    ---Returns the frame number which this cel belongs, the frame number `1` is the first frame (not `0`). If you set this property the cel will be moved to the given `frameNumber`, check the notes of [Cel.frame](lua://Cel.frame).
+    ---Returns the frame number to which this cel belongs. The frame number `1` is the first frame (not `0`). If you set this property, the cel will be moved to the given `frameNumber`. Check the notes of [Cel.frame](lua://Cel.frame).
     ---@type integer
     frameNumber = nil,
 
